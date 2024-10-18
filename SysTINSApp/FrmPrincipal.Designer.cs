@@ -49,11 +49,11 @@
             trocasEDevoluçõesToolStripMenuItem = new ToolStripMenuItem();
             materiaisToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem2 = new ToolStripMenuItem();
             abrirToolStripMenuItem = new ToolStripMenuItem();
             consultarToolStripMenuItem2 = new ToolStripMenuItem();
             encerrarToolStripMenuItem = new ToolStripMenuItem();
             listarToolStripMenuItem1 = new ToolStripMenuItem();
+            toolStripMenuItem2 = new ToolStripMenuItem();
             manutençãoToolStripMenuItem = new ToolStripMenuItem();
             sairLogoutToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
@@ -117,15 +117,14 @@
             // 
             usúariosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem1, consultarToolStripMenuItem, níveisToolStripMenuItem });
             usúariosToolStripMenuItem.Name = "usúariosToolStripMenuItem";
-            usúariosToolStripMenuItem.Size = new Size(180, 22);
+            usúariosToolStripMenuItem.Size = new Size(122, 22);
             usúariosToolStripMenuItem.Text = "&Usúarios";
             // 
             // novoToolStripMenuItem1
             // 
             novoToolStripMenuItem1.Name = "novoToolStripMenuItem1";
-            novoToolStripMenuItem1.Size = new Size(180, 22);
+            novoToolStripMenuItem1.Size = new Size(125, 22);
             novoToolStripMenuItem1.Text = "&Novo";
-            novoToolStripMenuItem1.Click += novoToolStripMenuItem1_Click;
             // 
             // consultarToolStripMenuItem
             // 
@@ -152,7 +151,6 @@
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
             pedidosToolStripMenuItem.Size = new Size(180, 22);
             pedidosToolStripMenuItem.Text = "&Pedido";
-            pedidosToolStripMenuItem.Click += pedidosToolStripMenuItem_Click_1;
             // 
             // novoToolStripMenuItem2
             // 
@@ -195,38 +193,38 @@
             // 
             caixaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { abrirToolStripMenuItem, consultarToolStripMenuItem2, encerrarToolStripMenuItem, listarToolStripMenuItem1 });
             caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
-            caixaToolStripMenuItem.Size = new Size(180, 22);
+            caixaToolStripMenuItem.Size = new Size(106, 22);
             caixaToolStripMenuItem.Text = "&Caixa";
-            // 
-            // toolStripMenuItem2
-            // 
-            toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(180, 22);
-            toolStripMenuItem2.Text = "Venda";
             // 
             // abrirToolStripMenuItem
             // 
             abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            abrirToolStripMenuItem.Size = new Size(180, 22);
+            abrirToolStripMenuItem.Size = new Size(125, 22);
             abrirToolStripMenuItem.Text = "&Abrir";
             // 
             // consultarToolStripMenuItem2
             // 
             consultarToolStripMenuItem2.Name = "consultarToolStripMenuItem2";
-            consultarToolStripMenuItem2.Size = new Size(180, 22);
+            consultarToolStripMenuItem2.Size = new Size(125, 22);
             consultarToolStripMenuItem2.Text = "&Consultar";
             // 
             // encerrarToolStripMenuItem
             // 
             encerrarToolStripMenuItem.Name = "encerrarToolStripMenuItem";
-            encerrarToolStripMenuItem.Size = new Size(180, 22);
+            encerrarToolStripMenuItem.Size = new Size(125, 22);
             encerrarToolStripMenuItem.Text = "&Encerrar";
             // 
             // listarToolStripMenuItem1
             // 
             listarToolStripMenuItem1.Name = "listarToolStripMenuItem1";
-            listarToolStripMenuItem1.Size = new Size(180, 22);
+            listarToolStripMenuItem1.Size = new Size(125, 22);
             listarToolStripMenuItem1.Text = "&Listar";
+            // 
+            // toolStripMenuItem2
+            // 
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            toolStripMenuItem2.Size = new Size(106, 22);
+            toolStripMenuItem2.Text = "Venda";
             // 
             // manutençãoToolStripMenuItem
             // 
@@ -251,6 +249,7 @@
             Name = "FrmPrincipal";
             Text = "SysTINS - Syspeças TI97 -ver 0.0.1";
             WindowState = FormWindowState.Maximized;
+            Load += FrmPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
