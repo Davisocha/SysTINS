@@ -33,17 +33,6 @@ namespace SysTINSApp
         {
 
         }
-
-        private void NovoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            FrmUsuarios frmUsuarios = new();
-            frmUsuarios.MdiParent = this; // this é formulario pai ele indica como se falasse (EU) ou seja ele vire frmprincipal
-                                          // para que não crie outra janela
-            frmUsuarios.Show();//se eu colocar show dialog ele não fecha até que encerre 
-        }
-
-
-
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             //var cmd = Banco.Abrir();
@@ -59,6 +48,19 @@ namespace SysTINSApp
             //    MessageBox.Show($"nivel não encontrado");
             //}  
 
+        }
+
+        private void usúariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void novoToolStripMenuItem1_Click_2 (object sender, EventArgs e)
+        {
+            FrmUsuarios frmUsuarios = new();
+            frmUsuarios.MdiParent = this; // this é formulario pai ele indica como se falasse (EU) ou seja ele vire frmprincipal
+                                          // para que não crie outra janela
+            frmUsuarios.Show();//se eu colocar show dialog ele não fecha até que encerre 
         }
     }
 }

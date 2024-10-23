@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
@@ -103,25 +104,58 @@ namespace SysTINSClass
                    dr.GetString(3),
                    Nivel.ObterPorId(dr.GetInt32(4)),
                    dr.GetBoolean(5)
-                   )
-                    );
+                   ));
             }
             return Lista;
         }
-        //        DELIMITER $$
-            //USE `systinsdb01`$$
-            //CREATE DEFINER =`root`@`localhost` PROCEDURE `sp_usuario_insert`(
-            //-- parâmetros da procedure
-            //spnome varchar(60), spemail varchar(60), spsenha varchar(32), spnivel int)
-            //begin
-            //    insert into usuarios
+        //atualizar
+        public bool Atualizar()
+        { 
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = $"sp_usuario_altera";
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+            return cmd.ExecuteNonQuery() > 0 ? true : false ;
 
-            //    values(0, spnome, spemail, md5(spsenha), spnivel, default);
-            //        select* from usuarios where id = last_insert_id();
-            //        end$$
-
-            //DELIMITER ;
-        
-        //
+        }
+        //efetuar login
+        public static Usuario EfetuarLogin(string email, string senha)
+        {
+            Usuario usuario = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from usuarios where email = '{email}' and senha = md5('{senha}') and ativo = 1";
+            var dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                usuario = new(
+                    dr.GetInt32(0),
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetString(3),
+                    Nivel.ObterPorId(dr.GetInt32(4)),
+                    dr.GetBoolean(5)
+                    );
+            }
+            return usuario;
+        }
     }
+
+
 }
+//        DELIMITER $$
+//USE `systinsdb01`$$
+//-- drop procedure `sp_usuario_altera`
+//CREATE DEFINER =`root`@`localhost` PROCEDURE `sp_usuario_altera`(
+//-- parâmetros da procedure
+//spid int, spnome varchar(60), spsenha varchar(32), spnivel int)
+//begin
+//    update usuarios
+//    set nome = spnome, senha = md5(spsenha), nivel_id = spnivel where id = spid;
+//end$$
+
+//DELIMITER ;
+
+
