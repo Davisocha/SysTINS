@@ -13,12 +13,12 @@ namespace SysTINSClass
     
     public class Usuario
     {
-        public int Id;
-        public string? Nome;
-        public string? Email;
-        public string? Senha; 
-        public Nivel Nivel;
-        public bool Ativo;
+        public int Id { get; set; }
+        public string? Nome { get; set; }
+        public string? Email { get; set; }
+        public string? Senha { get; set; }
+        public Nivel Nivel { get; set; }
+        public bool Ativo { get; set; }
 
         public Usuario()  //contrutor vazio
         { 
@@ -89,7 +89,7 @@ namespace SysTINSClass
             return usuario;
         }
         //obter lista de usuarios
-        public List<Usuario> ObterLista()
+        public static List<Usuario> ObterLista()
         {
             List<Usuario> Lista = new();
             var cmd = Banco.Abrir();

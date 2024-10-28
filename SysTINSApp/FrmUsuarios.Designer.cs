@@ -95,6 +95,7 @@
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(502, 150);
             dgvUsuarios.TabIndex = 3;
+            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
             // 
             // clnId
             // 
@@ -174,11 +175,13 @@
             // 
             // CmbNivel
             // 
+            CmbNivel.DropDownStyle = ComboBoxStyle.DropDownList;
             CmbNivel.FormattingEnabled = true;
             CmbNivel.Location = new Point(355, 130);
             CmbNivel.Name = "CmbNivel";
             CmbNivel.Size = new Size(121, 23);
             CmbNivel.TabIndex = 8;
+            CmbNivel.SelectedIndexChanged += CmbNivel_SelectedIndexChanged;
             // 
             // label5
             // 
