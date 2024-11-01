@@ -74,12 +74,14 @@
             // 
             // BtnAtualizar
             // 
+            BtnAtualizar.Enabled = false;
             BtnAtualizar.Location = new Point(401, 234);
             BtnAtualizar.Name = "BtnAtualizar";
             BtnAtualizar.Size = new Size(75, 23);
             BtnAtualizar.TabIndex = 2;
             BtnAtualizar.Text = "Atualizar";
             BtnAtualizar.UseVisualStyleBackColor = true;
+            BtnAtualizar.Click += BtnAtualizar_Click;
             // 
             // dgvUsuarios
             // 
@@ -95,7 +97,7 @@
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(502, 150);
             dgvUsuarios.TabIndex = 3;
-            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
+            dgvUsuarios.CellClick += dgvUsuarios_CellClick;
             // 
             // clnId
             // 

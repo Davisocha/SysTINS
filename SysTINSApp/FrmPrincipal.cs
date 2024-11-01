@@ -37,8 +37,13 @@ namespace SysTINSApp
         {
             Hide();
             FrmLogin frmLogin = new();
-            frmLogin.ShowDialog();
-            Show();
+            if (frmLogin.ShowDialog() == DialogResult.OK)//se ele retornar ok quer dizer que dialogresult no frmpricipal vai dar true e permitir a entrada
+            {
+                tsslUsuario.Text = Program.usuariologado.Nome + " - " + Program.usuariologado.Nivel.Nome;//o usuario vai ser indentificado e escrito no status e chama o nome e o nome do nivel dele
+                Show();
+            }
+            else
+                Application.Exit();
             // ele vai mostrar o formulario de login e o frmprincipal vai estar ocultado e só sera mostrado se o entrar for fechado
 
         }

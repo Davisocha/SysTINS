@@ -80,7 +80,7 @@
             // btnEntrar
             // 
             btnEntrar.Font = new Font("Sitka Small", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEntrar.Location = new Point(65, 159);
+            btnEntrar.Location = new Point(65, 180);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.Size = new Size(140, 36);
             btnEntrar.TabIndex = 4;
@@ -91,7 +91,7 @@
             // btnCancelar
             // 
             btnCancelar.Font = new Font("Sitka Small", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.Location = new Point(220, 159);
+            btnCancelar.Location = new Point(220, 180);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(145, 36);
             btnCancelar.TabIndex = 5;
@@ -116,7 +116,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             CancelButton = btnCancelar;
-            ClientSize = new Size(434, 207);
+            ClientSize = new Size(434, 239);
             ControlBox = false;
             Controls.Add(lblMensagem);
             Controls.Add(btnCancelar);
