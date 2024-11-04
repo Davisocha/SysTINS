@@ -72,5 +72,12 @@ namespace SysTINSApp
             frmUsuarios.Show();// exibe o form Usuarios na janela do sistema
                                //se eu colocar show dialog ele não fecha até que encerre 
         }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCategorias frmCategorias = new();
+            frmCategorias.MdiParent = this;
+            frmCategorias.Show();
+        }
     }
 }
