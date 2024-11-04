@@ -45,12 +45,12 @@ namespace SysTINSClass
             }
             cmd.Connection.Close();
         }
-       //metodo ObterPorSigla (consultar por Sigla)
-        public static Categoria ObterPorSigla(string sigla)
+       //metodo ObterPorID (consultar por Id)
+        public static Categoria ObterPorID(int id)
         {
             Categoria categoria = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from categorias where {sigla}";
+            cmd.CommandText = $"select * from categorias where {id}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
@@ -89,7 +89,7 @@ namespace SysTINSClass
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             return cmd.ExecuteNonQuery() > 0 ? true : false;
         }
-
+    
 
 
 
