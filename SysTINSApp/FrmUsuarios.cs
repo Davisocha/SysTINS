@@ -92,6 +92,16 @@ namespace SysTINSApp
                 MessageBox.Show("Usuário atualizado com sucesso!");
             }
         }
+
+        private void TxtId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 }

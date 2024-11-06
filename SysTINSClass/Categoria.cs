@@ -15,29 +15,36 @@ namespace SysTINSClass
     {
         public int Id { get; set; }
         public string? Nome { get; set; }
-        public string? Sigla { get; set;}
+        public string? Sigla { get; set; }
 
-        public Categoria( int id, string nome, string sigla)//construtor 
+        public Categoria()//construtor 
+        {
+
+        }
+        public Categoria(int id, string? nome, string? sigla)
         {
             Id = id;
             Nome = nome;
             Sigla = sigla;
         }
-        public Categoria(string nome, string sigla)
+        public Categoria( string? nome, string? sigla)
         {
+            
             Nome = nome;
             Sigla = sigla;
         }
-        public Categoria() { }
 
+        /// <summary>
+        /// este metodo irá inserir uma categoria no sistema pedindo os dados e retornando valor
+        /// </summary>
         //Metodo de Inserir Categoria
         public void InserirCategoria()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_categoria_insert";
-            cmd.Parameters.Add("spnome",MySql.Data.MySqlClient.MySqlDbType.VarChar).Value= Nome;//inseri um parametro
-            cmd.Parameters.AddWithValue("spsigla", Sigla).Value = Sigla;//fiquei em duvida e coloquei um Value, sem saber se teria problema
+            cmd.Parameters.AddWithValue("spnome", Nome);//inseri um parametro
+            cmd.Parameters.AddWithValue("spsigla", Sigla);//fiquei em duvida e coloquei um Value, sem saber se teria problema
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
@@ -45,12 +52,12 @@ namespace SysTINSClass
             }
             cmd.Connection.Close();
         }
-       //metodo ObterPorID (consultar por Id)
+        //metodo ObterPorID (consultar por Id)
         public static Categoria ObterPorID(int id)
         {
             Categoria categoria = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from categorias where {id}";
+            cmd.CommandText = $"select * from categorias where id = {id}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
@@ -60,7 +67,7 @@ namespace SysTINSClass
                     dr.GetString(2)
                     );
             }
-           return categoria;
+            return categoria;
         }
         //obter lista das categorias
         public static List<Categoria> ListaCategorias()
@@ -88,8 +95,20 @@ namespace SysTINSClass
             cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             return cmd.ExecuteNonQuery() > 0 ? true : false;
+            
         }
-    
+
+        public void Excluir()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = $"sp_categoria_delete";
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
+        }
+
 
 
 

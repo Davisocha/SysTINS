@@ -98,6 +98,7 @@
             dgvUsuarios.Size = new Size(502, 150);
             dgvUsuarios.TabIndex = 3;
             dgvUsuarios.CellClick += dgvUsuarios_CellClick;
+            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
             // 
             // clnId
             // 
@@ -214,6 +215,7 @@
             TxtId.ReadOnly = true;
             TxtId.Size = new Size(54, 23);
             TxtId.TabIndex = 11;
+            TxtId.TextChanged += TxtId_TextChanged;
             // 
             // TxtNome
             // 

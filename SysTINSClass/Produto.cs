@@ -17,23 +17,23 @@ namespace SysTINSClass
     
 
         public int Id { get ; set ; }
-        public int Cod_barras { get ; set ; }
+        public string Cod_barras { get ; set ; }
         public string? Descricao { get; set; }
-        public int Valor_unit { get ; set; }
-        public string Unidade_venda { get; set ; }
+        public double Valor_unit { get ; set; }
+        public string? Unidade_venda { get; set ; }
         public Categoria Categoria_id { get; set ; }
-        public int Estoque_minimo { get ; set; }
-        public int? Classe_desconto { get ; set; }
-        public int? Imagem { get ;set; }
-        public Timestamp Data_cad { get ; set ; }
+        public double Estoque_minimo { get ; set; }
+        public double? Classe_desconto { get ; set; }
+        public DateTime Data_cad { get ; set ; }
         
         public Produto()
         {
-          
+            Categoria_id = new();
         }
  
-        public Produto(int cod_barras, string? descricao, int valor_unit, string unidade_venda, Categoria categoria_id, int estoque_minimo, int? classe_desconto)//fiz sem Id e sem data_cad
+        public Produto(int id,string cod_barras, string? descricao, double valor_unit, string? unidade_venda, Categoria categoria_id, double estoque_minimo, double? classe_desconto, DateTime data_cad)//fiz sem Id
         {
+            Id = id;
             Cod_barras = cod_barras;
             Descricao = descricao;
             Valor_unit = valor_unit;
@@ -41,28 +41,37 @@ namespace SysTINSClass
             Categoria_id = categoria_id;
             Estoque_minimo = estoque_minimo;
             Classe_desconto = classe_desconto;
+            Data_cad = data_cad;
+        }
+        public Produto( string cod_barras, string? descricao, double valor_unit, string? unidade_venda, Categoria categoria_id, double estoque_minimo, double? classe_desconto)//fiz sem Id e sem data cad
+        {
+            
+            Cod_barras = cod_barras;
+            Descricao = descricao;
+            Valor_unit = valor_unit;
+            Unidade_venda = unidade_venda;
+            Categoria_id = categoria_id;
+            Estoque_minimo = estoque_minimo;
+            Classe_desconto = classe_desconto;
+            
         }
         //metodo inserir Produto
-       /// <summary>
-       /// Inserir Produto é um metodo que cadastra um produto, ao banco de Dados com sua categoria inserida
-       /// </summary>
+        /// <summary>
+        /// Inserir Produto é um metodo que cadastra um produto, ao banco de Dados com sua categoria inserida
+        /// </summary>
         public void InserirProduto()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_insert";
-            cmd.Parameters.AddWithValue("spcod_barras", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = Cod_barras;// ele declara o nome do parametro da procedure,
+            cmd.Parameters.AddWithValue("spcod_barras",Cod_barras);// ele declara o nome do parametro da procedure,
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", Valor_unit);
             cmd.Parameters.AddWithValue("spunidade_venda", Unidade_venda);
-            cmd.Parameters.AddWithValue("spcategoria_id", Categoria.ObterPorID);
+            cmd.Parameters.AddWithValue("spcategoria_id", Categoria_id);
             cmd.Parameters.AddWithValue("spestoque_minimo", Estoque_minimo);
             cmd.Parameters.AddWithValue("spclasse_desconto", Classe_desconto);
-            var dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                Id = dr.GetInt32(0);
-            }
+            Id =Convert.ToInt32( cmd.ExecuteScalar());// ele recebe o Id e Retorna um numero inteiro ou o obj Id que é o nosso caso
             cmd.Connection.Close();  
 
         }
@@ -76,13 +85,13 @@ namespace SysTINSClass
             if (dr.Read())
             {
                 categoria = new(
-                    dr.GetInt32(0),
+                    dr.GetString(0),
                     dr.GetString(1),
-                    dr.GetInt32(2),
+                    dr.GetDouble(2),
                     dr.GetString(3),
                     Categoria.ObterPorID(dr.GetInt32(4)),
-                    (dr.GetInt32(5)),
-                    dr.GetInt32(6));
+                    (dr.GetDouble(5)),
+                    dr.GetDouble(6));
             }
             cmd.Connection.Close();
             return categoria;
@@ -103,11 +112,13 @@ namespace SysTINSClass
                 Lista.Add(new(
                    dr.GetInt32(0),
                    dr.GetString(1),
-                   dr.GetInt32(2),
-                   dr.GetString(3),
-                   Categoria.ObterPorID(dr.GetInt32(4)),
-                   dr.GetInt32(5),
-                   dr.GetInt32(6)
+                   dr.GetString(2),
+                   dr.GetDouble(3),
+                   dr.GetString(4),
+                   Categoria.ObterPorID(dr.GetInt32(5)),
+                   dr.GetDouble(6),
+                   dr.GetDouble(7),
+                   dr.GetDateTime(9)
                    ));
             }
             return Lista;
@@ -120,19 +131,28 @@ namespace SysTINSClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = $"sp_usuario_altera";
+            cmd.CommandText = $"sp_produto_update";
             cmd.Parameters.AddWithValue("spid", Id);
-            cmd.Parameters.AddWithValue("spcod_barras", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = Cod_barras;
-            cmd.Parameters.AddWithValue("spdescricao", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = Descricao;
+            cmd.Parameters.AddWithValue("spcod_barras",Cod_barras);
+            cmd.Parameters.AddWithValue("spdescricao",Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", Valor_unit);
             cmd.Parameters.Add("spunidade_venda", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value= Unidade_venda;
             cmd.Parameters.AddWithValue("spcategoria_id", Categoria.ObterPorID);
-            cmd.Parameters.AddWithValue("spestoque_minimo", MySql.Data.MySqlClient.MySqlDbType.Decimal).Value = Estoque_minimo;
-            cmd.Parameters.AddWithValue("spclasse_desconto", MySql.Data.MySqlClient.MySqlDbType.Decimal).Value = Classe_desconto;
+            cmd.Parameters.AddWithValue("spestoque_minimo", Estoque_minimo);
+            cmd.Parameters.AddWithValue("spclasse_desconto",Classe_desconto);
             return cmd.ExecuteNonQuery() > 0 ? true : false;
         }
 
+        public void ExcluirProduto()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = $"";//--------------termina
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
 
+        }
 
 
     }

@@ -145,17 +145,5 @@ namespace SysTINSClass
 
 
 }
-//        DELIMITER $$
-//USE `systinsdb01`$$
-//-- drop procedure `sp_usuario_altera`
-//CREATE DEFINER =`root`@`localhost` PROCEDURE `sp_usuario_altera`(
-//-- parâmetros da procedure
-//spid int, spnome varchar(60), spsenha varchar(32), spnivel int)
-//begin
-//    update usuarios
-//    set nome = spnome, senha = md5(spsenha), nivel_id = spnivel where id = spid;
-//end$$
-
-//DELIMITER ;
 
 
