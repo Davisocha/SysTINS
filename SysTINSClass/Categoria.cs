@@ -17,16 +17,27 @@ namespace SysTINSClass
         public string? Nome { get; set; }
         public string? Sigla { get; set; }
 
-        public Categoria()//construtor 
+        public Categoria()//construtor Vazio
         {
 
         }
+        /// <summary>
+        /// Contrutor Completo para Categoria.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nome"></param>
+        /// <param name="sigla"></param>
         public Categoria(int id, string? nome, string? sigla)
         {
             Id = id;
             Nome = nome;
             Sigla = sigla;
         }
+        /// <summary>
+        /// Contrutor Com Nome e Sigla.
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <param name="sigla"></param>
         public Categoria( string? nome, string? sigla)
         {
             
@@ -35,9 +46,8 @@ namespace SysTINSClass
         }
 
         /// <summary>
-        /// este metodo irá inserir uma categoria no sistema pedindo os dados e retornando valor
+        /// este metodo irá inserir uma categoria no sistema pedindo os dados como Nome e Sigla, com estrutura com if para confirmação de cadastro de Categoria
         /// </summary>
-        //Metodo de Inserir Categoria
         public void InserirCategoria()
         {
             var cmd = Banco.Abrir();
@@ -52,7 +62,9 @@ namespace SysTINSClass
             }
             cmd.Connection.Close();
         }
-        //metodo ObterPorID (consultar por Id)
+        /// <summary>
+        /// Metodo feito para achar uma categoria, sendo o Id como Indice(parametro) para a buca da categoria
+        /// </summary>
         public static Categoria ObterPorID(int id)
         {
             Categoria categoria = new();
@@ -69,7 +81,9 @@ namespace SysTINSClass
             }
             return categoria;
         }
-        //obter lista das categorias
+        /// <summary>
+        /// Metodo feito para listar categorias, ordenadas pelo nome
+        /// </summary>
         public static List<Categoria> ListaCategorias()
         {
             List<Categoria> Lista = new();
@@ -86,6 +100,9 @@ namespace SysTINSClass
             }
             return Lista;
         }
+        /// <summary>
+        /// Metodo feito para atualizar uma categoria, sendo o Id, Nome e Sigla como parametros para a atualização
+        /// </summary>
         public bool AtualizarCategorias()
         {
             var cmd = Banco.Abrir();
@@ -97,8 +114,10 @@ namespace SysTINSClass
             return cmd.ExecuteNonQuery() > 0 ? true : false;
             
         }
-
-        public void Excluir()
+        /// <summary>
+        /// Metodo feito para excluir uma categoria, sendo o Id como unico parametro para exclusão
+        /// </summary>
+        public void ExcluirCatergoria()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;

@@ -76,11 +76,16 @@ namespace SysTINSClass
 
         }
         //metodo ObterPorId (consultar por Id)
+       /// <summary>
+       /// Este metodo contém a função achar um Produto pelo Id.
+       /// </summary>
+       /// <param name="id"></param>
+       /// <returns></returns>
         public static Produto ObterPorId(int id)
         {
             Produto categoria = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from categorias where {id}";
+            cmd.CommandText = $"select * from produtos where id = {id}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
@@ -101,7 +106,7 @@ namespace SysTINSClass
         /// Este metodo é feito para obter a lista dos produtos cadastrados no sistema ordenado pelo id
         /// </summary>
         /// <returns></returns>
-        public static List<Produto> ObterLista()
+        public static List<Produto> ObterListaDeProdutos()
         {
             List<Produto> Lista = new();
             var cmd = Banco.Abrir();
@@ -142,12 +147,14 @@ namespace SysTINSClass
             cmd.Parameters.AddWithValue("spclasse_desconto",Classe_desconto);
             return cmd.ExecuteNonQuery() > 0 ? true : false;
         }
-
+        /// <summary>
+        /// Este Metodo irá Excluir um produto no sistema só usando o Id de Indice (Parametro).
+        /// </summary>
         public void ExcluirProduto()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = $"";//--------------termina
+            cmd.CommandText = $"delete * from produtos where id = {Id}";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
