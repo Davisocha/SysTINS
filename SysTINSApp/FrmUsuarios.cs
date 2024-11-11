@@ -20,9 +20,9 @@ namespace SysTINSApp
         }
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
-            CmbNiveis.DataSource = Nivel.ObterLista();// obj de lista de niveis contendo todos os níveis da tabela Niveis
-            CmbNiveis.DisplayMember = "Nome";//exiba o nome 
-            CmbNiveis.ValueMember = "Id"; // se eu escolher o nome vai mostrar o valor do ID
+            CmbNivel.DataSource = Nivel.ObterLista();// obj de lista de niveis contendo todos os níveis da tabela Niveis
+            CmbNivel.DisplayMember = "Nome";//exiba o nome 
+            CmbNivel.ValueMember = "Id"; // se eu escolher o nome vai mostrar o valor do ID
             //carregando o datagrid de usúarios
             CarregaGridUsuarios();
         }
@@ -33,7 +33,7 @@ namespace SysTINSApp
                 TxtNome.Text,
                 TxtEmail.Text,
                 TxtSenha.Text,
-                Nivel.ObterPorId(Convert.ToInt32(CmbNiveis.SelectedValue)));
+                Nivel.ObterPorId(Convert.ToInt32(CmbNivel.SelectedValue)));
 
             usuario.Inserir();
             if (usuario.Id > 0)
@@ -74,7 +74,7 @@ namespace SysTINSApp
             TxtNome.Text = usuario.Nome;
             TxtEmail.Text = usuario.Email;
             chkAtivo.Checked = usuario.Ativo;
-            CmbNiveis.SelectedValue = usuario.Nivel.Id;
+            CmbNivel.SelectedValue = usuario.Nivel.Id;
             BtnAtualizar.Enabled = true;// o botão ficará true quando clicar nele, ai funcionará
             // MessageBox.Show(idUser.ToString());//vai mostrar o indice da linha
         }
@@ -85,7 +85,7 @@ namespace SysTINSApp
             usuario.Id = int.Parse(TxtId.Text);// pega o id do usuario converte para texto 
             usuario.Nome = TxtNome.Text;
             usuario.Senha = TxtSenha.Text;
-            usuario.Nivel = Nivel.ObterPorId(Convert.ToInt32(CmbNiveis.SelectedValue));//pega o metodo obter por id, vai pegar o id converter em int para o cmbnivel
+            usuario.Nivel = Nivel.ObterPorId(Convert.ToInt32(CmbNivel.SelectedValue));//pega o metodo obter por id, vai pegar o id converter em int para o cmbnivel
             if (usuario.Atualizar())// se o metodo atualizar der true, irá mostrar uma messagebox
             {
                 CarregaGridUsuarios();
@@ -99,16 +99,6 @@ namespace SysTINSApp
         }
 
         private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void BtnConsultar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TxtSenha_TextChanged(object sender, EventArgs e)
         {
 
         }

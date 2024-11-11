@@ -12,7 +12,7 @@ namespace SysTINSClass
     /// <summary>
     /// A Classe Produto é composta pelos 4 metodos de Inserir, atualizar, ObterPorId e Lista de Produtos.
     /// </summary>
-    public class Produto
+    internal class Produto
     {
     
 
@@ -59,33 +59,28 @@ namespace SysTINSClass
         /// <summary>
         /// Inserir Produto é um metodo que cadastra um produto, ao banco de Dados com sua categoria inserida
         /// </summary>
-        public void InserirProduto()
-        {
-            var cmd = Banco.Abrir();
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = "sp_produto_insert";
-            cmd.Parameters.AddWithValue("spcod_barras",Cod_barras);// ele declara o nome do parametro da procedure,
-            cmd.Parameters.AddWithValue("spdescricao", Descricao);
-            cmd.Parameters.AddWithValue("spvalor_unit", Valor_unit);
-            cmd.Parameters.AddWithValue("spunidade_venda", Unidade_venda);
-            cmd.Parameters.AddWithValue("spcategoria_id", Categoria_id);
-            cmd.Parameters.AddWithValue("spestoque_minimo", Estoque_minimo);
-            cmd.Parameters.AddWithValue("spclasse_desconto", Classe_desconto);
-            Id =Convert.ToInt32( cmd.ExecuteScalar());// ele recebe o Id e Retorna um numero inteiro ou o obj Id que é o nosso caso
-            cmd.Connection.Close();  
+            public void InserirProduto()
+            {
+                var cmd = Banco.Abrir();
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "sp_produto_insert";
+                cmd.Parameters.AddWithValue("spcod_barras",Cod_barras);// ele declara o nome do parametro da procedure,
+                cmd.Parameters.AddWithValue("spdescricao", Descricao);
+                cmd.Parameters.AddWithValue("spvalor_unit", Valor_unit);
+                cmd.Parameters.AddWithValue("spunidade_venda", Unidade_venda);
+                cmd.Parameters.AddWithValue("spcategoria_id", Categoria_id);
+                cmd.Parameters.AddWithValue("spestoque_minimo", Estoque_minimo);
+                cmd.Parameters.AddWithValue("spclasse_desconto", Classe_desconto);
+                Id =Convert.ToInt32( cmd.ExecuteScalar());// ele recebe o Id e Retorna um numero inteiro ou o obj Id que é o nosso caso
+                cmd.Connection.Close();  
 
-        }
+            }
         //metodo ObterPorId (consultar por Id)
-       /// <summary>
-       /// Este metodo contém a função achar um Produto pelo Id.
-       /// </summary>
-       /// <param name="id"></param>
-       /// <returns></returns>
         public static Produto ObterPorId(int id)
         {
             Produto categoria = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from produtos where id = {id}";
+            cmd.CommandText = $"select * from categorias where {id}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
@@ -106,7 +101,7 @@ namespace SysTINSClass
         /// Este metodo é feito para obter a lista dos produtos cadastrados no sistema ordenado pelo id
         /// </summary>
         /// <returns></returns>
-        public static List<Produto> ObterListaDeProdutos()
+        public static List<Produto> ObterLista()
         {
             List<Produto> Lista = new();
             var cmd = Banco.Abrir();
@@ -147,14 +142,12 @@ namespace SysTINSClass
             cmd.Parameters.AddWithValue("spclasse_desconto",Classe_desconto);
             return cmd.ExecuteNonQuery() > 0 ? true : false;
         }
-        /// <summary>
-        /// Este Metodo irá Excluir um produto no sistema só usando o Id de Indice (Parametro).
-        /// </summary>
+
         public void ExcluirProduto()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = $"delete * from produtos where id = {Id}";
+            cmd.CommandText = $"delete * from where id = {Id}";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();

@@ -1,5 +1,4 @@
 ﻿using Mysqlx.Prepare;
-using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,27 +17,16 @@ namespace SysTINSClass
         public string? Nome { get; set; }
         public string? Sigla { get; set; }
 
-        public Categoria()//construtor Vazio
+        public Categoria()//construtor 
         {
 
         }
-        /// <summary>
-        /// Contrutor Completo para Categoria.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="nome"></param>
-        /// <param name="sigla"></param>
         public Categoria(int id, string? nome, string? sigla)
         {
             Id = id;
             Nome = nome;
             Sigla = sigla;
         }
-        /// <summary>
-        /// Contrutor Com Nome e Sigla.
-        /// </summary>
-        /// <param name="nome"></param>
-        /// <param name="sigla"></param>
         public Categoria( string? nome, string? sigla)
         {
             
@@ -47,19 +35,24 @@ namespace SysTINSClass
         }
 
         /// <summary>
-        /// este metodo irá inserir uma categoria no sistema pedindo os dados como Nome e Sigla, com estrutura com if para confirmação de cadastro de Categoria
+        /// este metodo irá inserir uma categoria no sistema pedindo os dados e retornando valor
         /// </summary>
+        //Metodo de Inserir Categoria
         public void InserirCategoria()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandType = System.Data.CommandType.Text;//ele especifica o comando de uma string
-            cmd.CommandText = $"insert categorias (nome, sigla) values ('{Nome}','{Sigla}')";
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();//fechar a conexão
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "sp_categoria_insert";
+            cmd.Parameters.AddWithValue("spnome", Nome);//inseri um parametro
+            cmd.Parameters.AddWithValue("spsigla", Sigla);//fiquei em duvida e coloquei um Value, sem saber se teria problema
+            var dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                Id = dr.GetInt32(0);
+            }
+            cmd.Connection.Close();
         }
-        /// <summary>
-        /// Metodo feito para achar uma categoria, sendo o Id como Indice(parametro) para a buca da categoria
-        /// </summary>
+        //metodo ObterPorID (consultar por Id)
         public static Categoria ObterPorID(int id)
         {
             Categoria categoria = new();
@@ -74,17 +67,13 @@ namespace SysTINSClass
                     dr.GetString(2)
                     );
             }
-            cmd.Connection.Close();
             return categoria;
         }
-        /// <summary>
-        /// Metodo feito para listar categorias, ordenadas pelo nome
-        /// </summary>
+        //obter lista das categorias
         public static List<Categoria> ListaCategorias()
         {
             List<Categoria> Lista = new();
             var cmd = Banco.Abrir();
-            cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = $"select * from categorias order by nome asc";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -97,25 +86,19 @@ namespace SysTINSClass
             }
             return Lista;
         }
-        /// <summary>
-        /// Metodo feito para atualizar uma categoria, sendo o Id, Nome e Sigla como parametros para a atualização
-        /// </summary>
         public bool AtualizarCategorias()
         {
-            bool resposta = false;
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = $"update categorias set nome = '{Nome}', sigla'{Sigla}' where id = {Id}";
-            cmd.ExecuteNonQuery();
-            resposta = cmd.ExecuteNonQuery() > 0 ? true : false;
-            cmd.Connection.Close();
-            return resposta;
-
+            cmd.CommandText = $"sp_categoria_update";
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spsigla", Sigla);
+            return cmd.ExecuteNonQuery() > 0 ? true : false;
+            
         }
-        /// <summary>
-        /// Metodo feito para excluir uma categoria, sendo o Id como unico parametro para exclusão
-        /// </summary>
-        public void ExcluirCatergoria()
+
+        public void Excluir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;

@@ -11,12 +11,12 @@ namespace SysTINSClass
         public int    Id { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set;}
-        public string? Telefone { get; set;}
+        public string Telefone { get; set;}
         public string Email { get; set;}
-        public DateTime? Data_nasc { get; set;}
+        public DateTime Data_nasc { get; set;}
         public DateTime Data_cad { get; set;}
         public bool Ativo { get; set;}
-        public List<Enderecos> Enderecos{ get; set;}
+        public List<Endereco> Enderecos{ get; set;}
        /// <summary>
        /// Construtor vazio
        /// </summary>
@@ -33,7 +33,7 @@ namespace SysTINSClass
         /// <param name="telefone"></param>
         /// <param name="email"></param>
         /// <param name="data_nasc"></param>
-        public Cliente(int id, string nome, string cpf, string? telefone, string email, DateTime? data_nasc)
+        public Cliente(int id, string nome, string cpf, string telefone, string email, DateTime data_nasc)
         {
             Id = id;
             Nome = nome;
@@ -55,7 +55,7 @@ namespace SysTINSClass
        /// <param name="data_cad"></param>
        /// <param name="data_nasc"></param>
        /// <param name="ativo"></param>
-        public Cliente(int id, string nome, string cpf, string? telefone, string email,DateTime data_cad, DateTime? data_nasc, bool ativo)
+        public Cliente(int id, string nome, string cpf, string telefone, string email,DateTime data_cad, DateTime data_nasc, bool ativo)
         {
             Id = id;
             Nome = nome;
@@ -76,7 +76,7 @@ namespace SysTINSClass
         /// <param name="email"></param>
         /// <param name="data_cad"></param>
         /// <param name="data_nasc"></param>
-        public Cliente(string nome, string cpf, string? telefone, string email, DateTime data_cad, DateTime? data_nasc)
+        public Cliente(string nome, string cpf, string telefone, string email, DateTime data_cad, DateTime data_nasc)
         {
             Nome = nome;
             CPF = cpf;
@@ -170,7 +170,7 @@ namespace SysTINSClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = $"update clientes set ativo = 0 where id = {Id};";
+            cmd.CommandText = $"UPDATE clientes SET ativo = 0 WHERE id = {Id};";
             cmd.Parameters.AddWithValue("spid",Id);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();

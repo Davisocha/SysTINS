@@ -54,7 +54,7 @@ namespace SysTINSClass
               // nivel.Nome = dr.GetString(1);
               //nivel.Sigla = dr.GetString(2);
               // duas formas de fazer essa forma de metodos 
-              nivel = new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2));
+              nivel = new(dr.GetInt32(0)/*ele ta buscando um int*/, dr.GetString(1)/*ele esta buscando um texto*/, dr.GetString(2));//usando o metodo contrutor declarado em cima 
             } 
             
             cmd.Connection.Close();
@@ -70,10 +70,7 @@ namespace SysTINSClass
             var dr = cmd.ExecuteReader();
             while (dr.Read()) //se der verdadeiro irá passar por esta repetição
             {
-                lista.Add(new(dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2)
-                    )); //ele adiciona somente niveis no final da lista
+                lista.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2))); //ele adiciona somente niveis no final da lista
 
             }
             cmd.Connection.Close ();

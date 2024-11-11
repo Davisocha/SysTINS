@@ -94,13 +94,13 @@
             // novoToolStripMenuItem
             // 
             novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            novoToolStripMenuItem.Size = new Size(109, 22);
+            novoToolStripMenuItem.Size = new Size(180, 22);
             novoToolStripMenuItem.Text = "&Novo";
             // 
             // buscarToolStripMenuItem
             // 
             buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            buscarToolStripMenuItem.Size = new Size(109, 22);
+            buscarToolStripMenuItem.Size = new Size(180, 22);
             buscarToolStripMenuItem.Text = "&Buscar";
             // 
             // produtosToolStripMenuItem
@@ -115,7 +115,6 @@
             novoinserirToolStripMenuItem.Name = "novoinserirToolStripMenuItem";
             novoinserirToolStripMenuItem.Size = new Size(180, 22);
             novoinserirToolStripMenuItem.Text = "&Novo (inserir)";
-            novoinserirToolStripMenuItem.Click += novoinserirToolStripMenuItem_Click;
             // 
             // buscarConsultarToolStripMenuItem
             // 
@@ -154,20 +153,20 @@
             // novoToolStripMenuItem3
             // 
             novoToolStripMenuItem3.Name = "novoToolStripMenuItem3";
-            novoToolStripMenuItem3.Size = new Size(125, 22);
+            novoToolStripMenuItem3.Size = new Size(180, 22);
             novoToolStripMenuItem3.Text = "&Novo";
             novoToolStripMenuItem3.Click += novoToolStripMenuItem3_Click;
             // 
             // consultarToolStripMenuItem3
             // 
             consultarToolStripMenuItem3.Name = "consultarToolStripMenuItem3";
-            consultarToolStripMenuItem3.Size = new Size(125, 22);
+            consultarToolStripMenuItem3.Size = new Size(180, 22);
             consultarToolStripMenuItem3.Text = "&Consultar";
             // 
             // niveisToolStripMenuItem
             // 
             niveisToolStripMenuItem.Name = "niveisToolStripMenuItem";
-            niveisToolStripMenuItem.Size = new Size(125, 22);
+            niveisToolStripMenuItem.Size = new Size(180, 22);
             niveisToolStripMenuItem.Text = "&Niveis";
             // 
             // movimentoToolStripMenuItem
