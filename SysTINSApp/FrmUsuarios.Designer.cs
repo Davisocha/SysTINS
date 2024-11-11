@@ -71,6 +71,7 @@
             BtnConsultar.TabIndex = 1;
             BtnConsultar.Text = "Consultar";
             BtnConsultar.UseVisualStyleBackColor = true;
+            BtnConsultar.Click += BtnConsultar_Click;
             // 
             // BtnAtualizar
             // 
@@ -238,6 +239,7 @@
             TxtSenha.Size = new Size(174, 23);
             TxtSenha.TabIndex = 14;
             TxtSenha.UseSystemPasswordChar = true;
+            TxtSenha.TextChanged += TxtSenha_TextChanged;
             // 
             // TxtConfSenha
             // 

@@ -75,7 +75,7 @@ namespace SysTINSApp
 
         private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCategorias frmCategorias = new();
+            FrmCategoria frmCategorias = new();
             frmCategorias.MdiParent = this;
             frmCategorias.Show();
         }

@@ -102,6 +102,16 @@ namespace SysTINSApp
         {
 
         }
+
+        private void BtnConsultar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtSenha_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

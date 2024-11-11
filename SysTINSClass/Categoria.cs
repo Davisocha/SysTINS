@@ -1,4 +1,5 @@
 ﻿using Mysqlx.Prepare;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,16 +52,10 @@ namespace SysTINSClass
         public void InserirCategoria()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = "sp_categoria_insert";
-            cmd.Parameters.AddWithValue("spnome", Nome);//inseri um parametro
-            cmd.Parameters.AddWithValue("spsigla", Sigla);//fiquei em duvida e coloquei um Value, sem saber se teria problema
-            var dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                Id = dr.GetInt32(0);
-            }
-            cmd.Connection.Close();
+            cmd.CommandType = System.Data.CommandType.Text;//ele especifica o comando de uma string
+            cmd.CommandText = $"insert categorias (nome, sigla) values ('{Nome}','{Sigla}')";
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();//fechar a conexão
         }
         /// <summary>
         /// Metodo feito para achar uma categoria, sendo o Id como Indice(parametro) para a buca da categoria
@@ -79,6 +74,7 @@ namespace SysTINSClass
                     dr.GetString(2)
                     );
             }
+            cmd.Connection.Close();
             return categoria;
         }
         /// <summary>
@@ -88,6 +84,7 @@ namespace SysTINSClass
         {
             List<Categoria> Lista = new();
             var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = $"select * from categorias order by nome asc";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -105,14 +102,15 @@ namespace SysTINSClass
         /// </summary>
         public bool AtualizarCategorias()
         {
+            bool resposta = false;
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = $"sp_categoria_update";
-            cmd.Parameters.AddWithValue("spid", Id);
-            cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spsigla", Sigla);
-            return cmd.ExecuteNonQuery() > 0 ? true : false;
-            
+            cmd.CommandText = $"update categorias set nome = '{Nome}', sigla'{Sigla}' where id = {Id}";
+            cmd.ExecuteNonQuery();
+            resposta = cmd.ExecuteNonQuery() > 0 ? true : false;
+            cmd.Connection.Close();
+            return resposta;
+
         }
         /// <summary>
         /// Metodo feito para excluir uma categoria, sendo o Id como unico parametro para exclusão
