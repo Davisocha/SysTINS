@@ -69,8 +69,8 @@ namespace SysTINSClass
             {
                 categoria = new(
                     dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2)
+                    dr.GetString(1)
+
                     );
             }
             return categoria;

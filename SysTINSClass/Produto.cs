@@ -12,7 +12,7 @@ namespace SysTINSClass
     /// <summary>
     /// A Classe Produto é composta pelos 4 metodos de Inserir, atualizar, ObterPorId e Lista de Produtos.
     /// </summary>
-    internal class Produto
+    public class Produto
     {
     
 
@@ -21,14 +21,14 @@ namespace SysTINSClass
         public string? Descricao { get; set; }
         public double Valor_unit { get ; set; }
         public string? Unidade_venda { get; set ; }
-        public Categoria Categoria_id { get; set ; }
+        public Categoria Categoria { get; set ; }
         public double Estoque_minimo { get ; set; }
         public double? Classe_desconto { get ; set; }
         public DateTime Data_cad { get ; set ; }
         
         public Produto()
         {
-            Categoria_id = new();
+            Categoria = new();
         }
  
         public Produto(int id,string cod_barras, string? descricao, double valor_unit, string? unidade_venda, Categoria categoria_id, double estoque_minimo, double? classe_desconto, DateTime data_cad)//fiz sem Id
@@ -38,7 +38,7 @@ namespace SysTINSClass
             Descricao = descricao;
             Valor_unit = valor_unit;
             Unidade_venda = unidade_venda;
-            Categoria_id = categoria_id;
+            Categoria = categoria_id;
             Estoque_minimo = estoque_minimo;
             Classe_desconto = classe_desconto;
             Data_cad = data_cad;
@@ -50,7 +50,7 @@ namespace SysTINSClass
             Descricao = descricao;
             Valor_unit = valor_unit;
             Unidade_venda = unidade_venda;
-            Categoria_id = categoria_id;
+            Categoria = categoria_id;
             Estoque_minimo = estoque_minimo;
             Classe_desconto = classe_desconto;
             
@@ -68,7 +68,7 @@ namespace SysTINSClass
                 cmd.Parameters.AddWithValue("spdescricao", Descricao);
                 cmd.Parameters.AddWithValue("spvalor_unit", Valor_unit);
                 cmd.Parameters.AddWithValue("spunidade_venda", Unidade_venda);
-                cmd.Parameters.AddWithValue("spcategoria_id", Categoria_id);
+                cmd.Parameters.AddWithValue("spcategoria_id", Categoria.Id);
                 cmd.Parameters.AddWithValue("spestoque_minimo", Estoque_minimo);
                 cmd.Parameters.AddWithValue("spclasse_desconto", Classe_desconto);
                 Id =Convert.ToInt32( cmd.ExecuteScalar());// ele recebe o Id e Retorna um numero inteiro ou o obj Id que é o nosso caso
@@ -140,7 +140,7 @@ namespace SysTINSClass
             cmd.Parameters.AddWithValue("spdescricao",Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", Valor_unit);
             cmd.Parameters.AddWithValue("spunidade_venda", Unidade_venda);
-            cmd.Parameters.AddWithValue("spcategoria_id", Categoria_id);
+            cmd.Parameters.AddWithValue("spcategoria_id", Categoria);
             cmd.Parameters.AddWithValue("spestoque_minimo", Estoque_minimo);
             cmd.Parameters.AddWithValue("spclasse_desconto",Classe_desconto);
             return cmd.ExecuteNonQuery() > 0 ? true : false;

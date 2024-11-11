@@ -66,6 +66,7 @@
             txtNewCat = new TextBox();
             label10 = new Label();
             button1 = new Button();
+            btnCancelar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             gpProdutos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)npEstoqueMinimo).BeginInit();
@@ -174,6 +175,7 @@
             gpProdutos.TabIndex = 8;
             gpProdutos.TabStop = false;
             gpProdutos.Text = "Produtos";
+            gpProdutos.Enter += gpProdutos_Enter;
             // 
             // cmbCategoria
             // 
@@ -182,6 +184,7 @@
             cmbCategoria.Name = "cmbCategoria";
             cmbCategoria.Size = new Size(282, 23);
             cmbCategoria.TabIndex = 5;
+            cmbCategoria.SelectedIndexChanged += cmbCategoria_SelectedIndexChanged;
             // 
             // npEstoqueMinimo
             // 
@@ -207,6 +210,7 @@
             btnAdicionar.TabIndex = 7;
             btnAdicionar.Text = "&Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // btnEditar
             // 
@@ -348,6 +352,7 @@
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(btnCancelar);
             panel1.Controls.Add(label12);
             panel1.Controls.Add(label11);
             panel1.Controls.Add(txtNewCatSigla);
@@ -405,12 +410,23 @@
             // 
             // button1
             // 
-            button1.Location = new Point(83, 139);
+            button1.Location = new Point(38, 142);
             button1.Name = "button1";
-            button1.Size = new Size(194, 23);
+            button1.Size = new Size(117, 23);
             button1.TabIndex = 0;
             button1.Text = "Adicionar";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(175, 142);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(119, 23);
+            btnCancelar.TabIndex = 4;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // FrmProdutos
             // 
@@ -474,5 +490,6 @@
         private TextBox txtNewCat;
         private Label label10;
         private Button button1;
+        private Button btnCancelar;
     }
 }
