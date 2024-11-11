@@ -41,7 +41,7 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            CmbNivel = new ComboBox();
+            CmbNiveis = new ComboBox();
             label5 = new Label();
             chkAtivo = new CheckBox();
             TxtId = new TextBox();
@@ -177,15 +177,15 @@
             label4.TabIndex = 7;
             label4.Text = "Senha";
             // 
-            // CmbNivel
+            // CmbNiveis
             // 
-            CmbNivel.DropDownStyle = ComboBoxStyle.DropDownList;
-            CmbNivel.FormattingEnabled = true;
-            CmbNivel.Location = new Point(355, 130);
-            CmbNivel.Name = "CmbNivel";
-            CmbNivel.Size = new Size(121, 23);
-            CmbNivel.TabIndex = 8;
-            CmbNivel.SelectedIndexChanged += CmbNivel_SelectedIndexChanged;
+            CmbNiveis.DropDownStyle = ComboBoxStyle.DropDownList;
+            CmbNiveis.FormattingEnabled = true;
+            CmbNiveis.Location = new Point(355, 130);
+            CmbNiveis.Name = "CmbNiveis";
+            CmbNiveis.Size = new Size(121, 23);
+            CmbNiveis.TabIndex = 8;
+            CmbNiveis.SelectedIndexChanged += CmbNivel_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -271,7 +271,7 @@
             Controls.Add(TxtId);
             Controls.Add(chkAtivo);
             Controls.Add(label5);
-            Controls.Add(CmbNivel);
+            Controls.Add(CmbNiveis);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -298,7 +298,7 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private ComboBox CmbNivel;
+        private ComboBox CmbNiveis;
         private Label label5;
         private CheckBox chkAtivo;
         private TextBox TxtId;

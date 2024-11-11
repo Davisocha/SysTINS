@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBox1 = new ComboBox();
+            cmbCategorias = new ComboBox();
             textBox1 = new TextBox();
             textBox3 = new TextBox();
             textBox4 = new TextBox();
@@ -41,7 +41,7 @@
             label5 = new Label();
             label6 = new Label();
             button1 = new Button();
-            dgvCategorias = new DataGridView();
+            dgvProdutos = new DataGridView();
             clnID = new DataGridViewTextBoxColumn();
             clnCod_Bar = new DataGridViewTextBoxColumn();
             clnDescricao = new DataGridViewTextBoxColumn();
@@ -51,17 +51,17 @@
             clnEstoque_min = new DataGridViewTextBoxColumn();
             clnClasse_Desconto = new DataGridViewTextBoxColumn();
             pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)dgvCategorias).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // comboBox1
+            // cmbCategorias
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(165, 84);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 0;
+            cmbCategorias.FormattingEnabled = true;
+            cmbCategorias.Location = new Point(165, 84);
+            cmbCategorias.Name = "cmbCategorias";
+            cmbCategorias.Size = new Size(121, 23);
+            cmbCategorias.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -167,21 +167,21 @@
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
             // 
-            // dgvCategorias
+            // dgvProdutos
             // 
-            dgvCategorias.AllowUserToAddRows = false;
-            dgvCategorias.AllowUserToDeleteRows = false;
-            dgvCategorias.AllowUserToResizeColumns = false;
-            dgvCategorias.AllowUserToResizeRows = false;
-            dgvCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCategorias.Columns.AddRange(new DataGridViewColumn[] { clnID, clnCod_Bar, clnDescricao, clnValor_Unit, clnUnidadeVenda, clnCategoria, clnEstoque_min, clnClasse_Desconto });
-            dgvCategorias.Location = new Point(32, 288);
-            dgvCategorias.Name = "dgvCategorias";
-            dgvCategorias.RowHeadersVisible = false;
-            dgvCategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCategorias.Size = new Size(752, 150);
-            dgvCategorias.TabIndex = 12;
-            dgvCategorias.CellContentClick += dgvUsuarios_CellContentClick;
+            dgvProdutos.AllowUserToAddRows = false;
+            dgvProdutos.AllowUserToDeleteRows = false;
+            dgvProdutos.AllowUserToResizeColumns = false;
+            dgvProdutos.AllowUserToResizeRows = false;
+            dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProdutos.Columns.AddRange(new DataGridViewColumn[] { clnID, clnCod_Bar, clnDescricao, clnValor_Unit, clnUnidadeVenda, clnCategoria, clnEstoque_min, clnClasse_Desconto });
+            dgvProdutos.Location = new Point(32, 288);
+            dgvProdutos.Name = "dgvProdutos";
+            dgvProdutos.RowHeadersVisible = false;
+            dgvProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProdutos.Size = new Size(752, 150);
+            dgvProdutos.TabIndex = 12;
+            dgvProdutos.CellClick += dgvCategorias_CellClick;
             // 
             // clnID
             // 
@@ -254,7 +254,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(pictureBox1);
-            Controls.Add(dgvCategorias);
+            Controls.Add(dgvProdutos);
             Controls.Add(button1);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -267,10 +267,11 @@
             Controls.Add(textBox4);
             Controls.Add(textBox3);
             Controls.Add(textBox1);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbCategorias);
             Name = "FrmNovoProduto";
             Text = "FrmNovoProduto";
-            ((System.ComponentModel.ISupportInitialize)dgvCategorias).EndInit();
+            Load += FrmNovoProduto_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -278,7 +279,7 @@
 
         #endregion
 
-        private ComboBox comboBox1;
+        private ComboBox cmbCategorias;
         private TextBox textBox1;
         private TextBox textBox3;
         private TextBox textBox4;
@@ -291,7 +292,7 @@
         private Label label5;
         private Label label6;
         private Button button1;
-        private DataGridView dgvCategorias;
+        private DataGridView dgvProdutos;
         private DataGridViewTextBoxColumn clnID;
         private DataGridViewTextBoxColumn clnCod_Bar;
         private DataGridViewTextBoxColumn clnDescricao;

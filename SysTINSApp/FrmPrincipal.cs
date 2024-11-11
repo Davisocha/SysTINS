@@ -79,5 +79,12 @@ namespace SysTINSApp
             frmCategorias.MdiParent = this;
             frmCategorias.Show();
         }
+
+        private void novoinserirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmProdutos frmprodutos= new();
+            frmprodutos.MdiParent = this;
+            frmprodutos.Show();
+        }
     }
 }

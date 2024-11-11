@@ -12,7 +12,7 @@ namespace SysTINSClass
     /// <summary>
     /// A Classe Produto é composta pelos 4 metodos de Inserir, atualizar, ObterPorId e Lista de Produtos.
     /// </summary>
-    internal class Produto
+    public class Produto
     {
     
 
