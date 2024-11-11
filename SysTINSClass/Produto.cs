@@ -78,23 +78,26 @@ namespace SysTINSClass
         //metodo ObterPorId (consultar por Id)
         public static Produto ObterPorId(int id)
         {
-            Produto categoria = new();
+            Produto produtos = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from categorias where {id}";
+            cmd.CommandText = $"select * from produtos where {id}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                categoria = new(
-                    dr.GetString(0),
-                    dr.GetString(1),
-                    dr.GetDouble(2),
-                    dr.GetString(3),
-                    Categoria.ObterPorID(dr.GetInt32(4)),
-                    (dr.GetDouble(5)),
-                    dr.GetDouble(6));
+                produtos = new(
+                   dr.GetInt32(0),
+                   dr.GetString(1),
+                   dr.GetString(2),
+                   dr.GetDouble(3),
+                   dr.GetString(4),
+                   Categoria.ObterPorID(dr.GetInt32(5)),
+                   dr.GetDouble(6),
+                   dr.GetDouble(7),
+                   dr.GetDateTime(9)
+                   );
             }
             cmd.Connection.Close();
-            return categoria;
+            return produtos;
         }
         //obter lista de Produtos
         /// <summary>
@@ -105,7 +108,7 @@ namespace SysTINSClass
         {
             List<Produto> Lista = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from produtos order by id asc";
+            cmd.CommandText = $"select * from produtos order by descricao asc";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -136,8 +139,8 @@ namespace SysTINSClass
             cmd.Parameters.AddWithValue("spcod_barras",Cod_barras);
             cmd.Parameters.AddWithValue("spdescricao",Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", Valor_unit);
-            cmd.Parameters.Add("spunidade_venda", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value= Unidade_venda;
-            cmd.Parameters.AddWithValue("spcategoria_id", Categoria.ObterPorID);
+            cmd.Parameters.AddWithValue("spunidade_venda", Unidade_venda);
+            cmd.Parameters.AddWithValue("spcategoria_id", Categoria_id);
             cmd.Parameters.AddWithValue("spestoque_minimo", Estoque_minimo);
             cmd.Parameters.AddWithValue("spclasse_desconto",Classe_desconto);
             return cmd.ExecuteNonQuery() > 0 ? true : false;
@@ -147,7 +150,7 @@ namespace SysTINSClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = $"delete * from where id = {Id}";
+            cmd.CommandText = $"delete * produtos from where id = {Id}";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();

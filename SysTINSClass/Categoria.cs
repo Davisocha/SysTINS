@@ -33,6 +33,12 @@ namespace SysTINSClass
             Nome = nome;
             Sigla = sigla;
         }
+        public Categoria(int id, string? nome)
+        {
+            Id = id;
+            Nome = nome;
+
+        }
 
         /// <summary>
         /// este metodo irá inserir uma categoria no sistema pedindo os dados e retornando valor
@@ -80,9 +86,8 @@ namespace SysTINSClass
             {
                 Lista.Add(new(
                    dr.GetInt32(0),
-                   dr.GetString(1),
-                   dr.GetString(2)
-               ));
+                   dr.GetString(1)
+                   ));
             }
             return Lista;
         }
