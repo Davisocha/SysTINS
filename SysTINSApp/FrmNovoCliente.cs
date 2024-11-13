@@ -112,6 +112,20 @@ namespace SysTINSApp
         {
 
         }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new();
+            cliente.Id = int.Parse(txtId.Text); 
+            cliente.Nome = txtNome.Text;
+            cliente. = TxtSenha.Text;
+            usuario.Nivel = Nivel.ObterPorId(Convert.ToInt32(CmbNivel.SelectedValue));//pega o metodo obter por id, vai pegar o id converter em int para o cmbnivel
+            if (usuario.Atualizar())// se o metodo atualizar der true, irá mostrar uma messagebox
+            {
+                CarregaGridUsuarios();
+                MessageBox.Show("Usuário atualizado com sucesso!");
+            }
+        }
     }
 
 }

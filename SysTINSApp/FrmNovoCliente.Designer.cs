@@ -170,6 +170,7 @@
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = true;
             btnAtualizar.Visible = false;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnInserir
             // 
