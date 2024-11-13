@@ -70,6 +70,7 @@ namespace SysTINSApp
             int linhaAtual = dgvUsuarios.CurrentRow.Index;
             int idUser = Convert.ToInt32(dgvUsuarios.Rows[linhaAtual].Cells[0].Value);//ele recupera o valor zero da linha id
             var usuario = Usuario.ObterPorId(idUser);
+ 
             TxtId.Text = usuario.Id.ToString();
             TxtNome.Text = usuario.Nome;
             TxtEmail.Text = usuario.Email;
@@ -99,6 +100,11 @@ namespace SysTINSApp
         }
 
         private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void chkAtivo_CheckedChanged(object sender, EventArgs e)
         {
 
         }

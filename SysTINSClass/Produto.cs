@@ -80,7 +80,7 @@ namespace SysTINSClass
         {
             Produto produtos = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from produtos where {id}";
+            cmd.CommandText = $"select * from produtos where id ={id}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {

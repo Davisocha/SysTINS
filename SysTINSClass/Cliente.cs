@@ -11,9 +11,9 @@ namespace SysTINSClass
         public int    Id { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set;}
-        public string Telefone { get; set;}
+        public string? Telefone { get; set;}
         public string Email { get; set;}
-        public DateTime Data_nasc { get; set;}
+        public DateTime? Data_nasc { get; set;}
         public DateTime Data_cad { get; set;}
         public bool Ativo { get; set;}
         public List<Endereco> Enderecos{ get; set;}
@@ -76,14 +76,14 @@ namespace SysTINSClass
         /// <param name="email"></param>
         /// <param name="data_cad"></param>
         /// <param name="data_nasc"></param>
-        public Cliente(string nome, string cpf, string telefone, string email, DateTime data_cad, DateTime data_nasc)
+        public Cliente(string nome, string cpf, string telefone, string email, DateTime data_nasc)
         {
             Nome = nome;
             CPF = cpf;
             Telefone = telefone;
             Email = email;
             Data_nasc = data_nasc;
-            Data_cad = data_cad;
+ 
         }
        /// <summary>
        /// metodo que Insere o Cliente com os parametro de nome, cpf, tel, email e data_nasc
@@ -92,12 +92,12 @@ namespace SysTINSClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = "sp_insere_cliente";
+            cmd.CommandText = "sp_cliente_insert";
             cmd.Parameters.AddWithValue("spnome",Nome );
             cmd.Parameters.AddWithValue("spcpf", CPF);
             cmd.Parameters.AddWithValue("sptelefone", Telefone);
             cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spdatanasc", MySql.Data.MySqlClient.MySqlDbType.Date).Value= Data_nasc;
+            cmd.Parameters.AddWithValue("spdatanasc", Data_nasc);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
             cmd.Connection.Close();
         }

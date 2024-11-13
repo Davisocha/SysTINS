@@ -207,6 +207,7 @@
             chkAtivo.TabIndex = 10;
             chkAtivo.Text = "Ativo";
             chkAtivo.UseVisualStyleBackColor = true;
+            chkAtivo.CheckedChanged += chkAtivo_CheckedChanged;
             // 
             // TxtId
             // 

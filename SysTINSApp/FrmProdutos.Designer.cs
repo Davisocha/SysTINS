@@ -60,13 +60,13 @@
             txtUnidadeVenda = new TextBox();
             label1 = new Label();
             panel1 = new Panel();
+            btnCancelar = new Button();
             label12 = new Label();
             label11 = new Label();
             txtNewCatSigla = new TextBox();
             txtNewCat = new TextBox();
             label10 = new Label();
             button1 = new Button();
-            btnCancelar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             gpProdutos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)npEstoqueMinimo).BeginInit();
@@ -365,6 +365,16 @@
             panel1.TabIndex = 10;
             panel1.Visible = false;
             // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(175, 142);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(119, 23);
+            btnCancelar.TabIndex = 4;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // label12
             // 
             label12.AutoSize = true;
@@ -417,16 +427,6 @@
             button1.Text = "Adicionar";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.Location = new Point(175, 142);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(119, 23);
-            btnCancelar.TabIndex = 4;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
             // 
             // FrmProdutos
             // 
