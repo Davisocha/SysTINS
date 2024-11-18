@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridView dgvClientes;
             txtCPF = new TextBox();
             txtNome = new TextBox();
             txtTelefone = new TextBox();
@@ -35,18 +36,15 @@
             gbClientes = new GroupBox();
             ckbAtivo = new CheckBox();
             dtpData_nasc = new DateTimePicker();
-            txtId = new TextBox();
             button1 = new Button();
             button3 = new Button();
             btnAtualizar = new Button();
             btnInserir = new Button();
-            label5 = new Label();
             label1 = new Label();
             label3 = new Label();
             label4 = new Label();
             label2 = new Label();
             lbNome = new Label();
-            dgvClientes = new DataGridView();
             clnID = new DataGridViewTextBoxColumn();
             clnNome = new DataGridViewTextBoxColumn();
             clnCPF = new DataGridViewTextBoxColumn();
@@ -55,6 +53,7 @@
             clnData_nasc = new DataGridViewTextBoxColumn();
             clnData_cad = new DataGridViewTextBoxColumn();
             clnAtivo = new DataGridViewTextBoxColumn();
+            dgvClientes = new DataGridView();
             gbClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
@@ -91,12 +90,10 @@
             // 
             gbClientes.Controls.Add(ckbAtivo);
             gbClientes.Controls.Add(dtpData_nasc);
-            gbClientes.Controls.Add(txtId);
             gbClientes.Controls.Add(button1);
             gbClientes.Controls.Add(button3);
             gbClientes.Controls.Add(btnAtualizar);
             gbClientes.Controls.Add(btnInserir);
-            gbClientes.Controls.Add(label5);
             gbClientes.Controls.Add(label1);
             gbClientes.Controls.Add(label3);
             gbClientes.Controls.Add(label4);
@@ -132,14 +129,6 @@
             dtpData_nasc.Size = new Size(166, 23);
             dtpData_nasc.TabIndex = 4;
             dtpData_nasc.ValueChanged += dateTimePicker1_ValueChanged;
-            // 
-            // txtId
-            // 
-            txtId.Location = new Point(539, 44);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(60, 23);
-            txtId.TabIndex = 7;
-            txtId.Visible = false;
             // 
             // button1
             // 
@@ -181,15 +170,6 @@
             btnInserir.Text = "Inserir";
             btnInserir.UseVisualStyleBackColor = true;
             btnInserir.Click += btnInserir_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(539, 26);
-            label5.Name = "label5";
-            label5.Size = new Size(18, 15);
-            label5.TabIndex = 2;
-            label5.Text = "ID";
             // 
             // label1
             // 
@@ -351,8 +331,6 @@
         private DataGridViewTextBoxColumn clnData_nasc;
         private DataGridViewTextBoxColumn clnData_cad;
         private DataGridViewTextBoxColumn clnAtivo;
-        private TextBox txtId;
-        private Label label5;
         private DateTimePicker dtpData_nasc;
         private CheckBox ckbAtivo;
     }
