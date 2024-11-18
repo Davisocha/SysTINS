@@ -98,5 +98,12 @@ namespace SysTINSApp
             frmNovoCliente.MdiParent = this;
             frmNovoCliente.Show();
         }
+
+        private void novoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmNovoPedido frmNovoPedido = new();
+            frmNovoPedido.MdiParent = this;
+            frmNovoPedido.Show();
+        }
     }
 }

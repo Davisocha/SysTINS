@@ -432,7 +432,9 @@ DELIMITER $$
 USE `systinsdb01`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_itempedido_delete`(spid int)
 begin
-	delete from itempedido
+    update estoques set quantidade = quantidade + (select quantidade from itempedido where id = spid);
+	 
+    delete from itempedido
     where id = spid;
 end$$
 
@@ -461,9 +463,15 @@ DELIMITER $$
 USE `systinsdb01`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_itempedido_update`(spid int,spquantidade decimal(10,2), spdesconto decimal(10,2))
 begin
-	update itempedido set quantidade = spquantidade, desconto = spdesconto
-    where id = spid;
-end$$
+	update estoques 
+  set quantidade = quantidade + (select quantidade from itempedido where id =spid) 
+  where produto_id = (select quantidade from itempedido where id =spid );
+ --atualizar o itempedido 
+  update itempedido set quantidade = spquantidade, desconto = spdesconto
+  where id = spid;
+ --atualiza a quantidade
+ update itempedido set quantidade = quantidade -(select quantidade from itempedido where id =spid); 
+  end$$
 
 DELIMITER ;
 

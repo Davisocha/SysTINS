@@ -22,21 +22,26 @@ namespace SysTINSApp
             int linhaAtual = dgvClientes.CurrentRow.Index;
             int idUser = Convert.ToInt32(dgvClientes.Rows[linhaAtual].Cells[0].Value);//ele recupera o valor zero da linha id
             var cliente = Cliente.ObterClientePorID(idUser);
+            ckbAtivo.Enabled = true;
             ckbAtivo.Visible = true;
             btnInserir.Enabled = false;
-            txtId.Text = cliente.Id.ToString();
-            
+
+
+            TxtId.Text = cliente.Id.ToString();
             txtNome.Text = cliente.Nome;
-            
+            //
             txtCPF.Text = cliente.CPF;
             txtCPF.Enabled = false;
-            
+            //
             txtTelefone.Text = cliente.Telefone;
-            
+            //
             txtEmail.Text = cliente.Email;
             txtEmail.Enabled = false;
+            //
             dtpData_nasc.Value = (DateTime)cliente.Data_nasc;
+            //
             ckbAtivo.Checked = cliente.Ativo;
+            //
             btnAtualizar.Visible = true;
             btnAtualizar.Enabled = true;
 
@@ -69,6 +74,8 @@ namespace SysTINSApp
         }
         private void btnInserir_Click(object sender, EventArgs e)
         {
+            ckbAtivo.Enabled = false;
+            ckbAtivo.Visible = false;
             Cliente cliente = new(
                 txtNome.Text,
                 txtCPF.Text,
@@ -80,7 +87,7 @@ namespace SysTINSApp
             cliente.InserirCliente();
             if (cliente.Id > 0)
             {
-                txtId.Text = cliente.Id.ToString();
+                TxtId.Text = cliente.Id.ToString();
                 CarregaGridDeClientes();
                 MessageBox.Show($"Cliente Cadastrado com o ID {cliente.Id}");
                 btnInserir.Enabled = false;
@@ -108,7 +115,7 @@ namespace SysTINSApp
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             Cliente cliente = new();
-            cliente.Id = int.Parse(txtId.Text); 
+            cliente.Id = int.Parse(TxtId.Text);
             cliente.Nome = txtNome.Text;
             cliente.Telefone = txtTelefone.Text;
             cliente.Telefone = txtTelefone.Text;
@@ -119,6 +126,11 @@ namespace SysTINSApp
                 CarregaGridDeClientes();
                 MessageBox.Show("Cliente atualizado com sucesso!");
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

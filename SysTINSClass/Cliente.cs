@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,9 +86,18 @@ namespace SysTINSClass
             Data_nasc = data_nasc;
  
         }
-       /// <summary>
-       /// metodo que Insere o Cliente com os parametro de nome, cpf, tel, email e data_nasc
-       /// </summary>
+        public Cliente(string nome, string cpf, string telefone, string email, DateTime data_nasc, bool ativo)
+        {
+            Nome = nome;
+            CPF = cpf;
+            Telefone = telefone;
+            Email = email;
+            Data_nasc = data_nasc;
+            Ativo = ativo;
+        }
+        /// <summary>
+        /// metodo que Insere o Cliente com os parametro de nome, cpf, tel, email e data_nasc
+        /// </summary>
         public void InserirCliente()
         {
             var cmd = Banco.Abrir();
@@ -119,10 +129,13 @@ namespace SysTINSClass
                     dr.GetString(1),
                     dr.GetString(2),
                     dr.GetString(3),
-                   dr.GetString(4),
-                    dr.GetDateTime(5)
+                    dr.GetString(4),
+                    dr.GetDateTime(5),
+                    dr.GetDateTime(6),
+                    dr.GetBoolean(7)
                    );
             }
+
             return cliente;
         }
         /// <summary>
@@ -139,12 +152,14 @@ namespace SysTINSClass
             {
                 Lista.Add(new(
                   dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2),
-                    dr.GetString(3),
-                   dr.GetString(4),
-                    dr.GetDateTime(5)
-                   )); 
+                  dr.GetString(1),
+                  dr.GetString(2),
+                  dr.GetString(3),
+                  dr.GetString(4),
+                  dr.GetDateTime(5),
+                  dr.GetDateTime(6),
+                  dr.GetBoolean(7)
+                  )); 
             }
             return Lista;
         }
