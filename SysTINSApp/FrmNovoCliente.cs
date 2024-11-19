@@ -41,7 +41,7 @@ namespace SysTINSApp
             dtpData_nasc.Value = (DateTime)cliente.Data_nasc;
             //
             ckbAtivo.Checked = cliente.Ativo;
-            //
+
             btnAtualizar.Visible = true;
             btnAtualizar.Enabled = true;
 
@@ -89,7 +89,7 @@ namespace SysTINSApp
             {
                 TxtId.Text = cliente.Id.ToString();
                 CarregaGridDeClientes();
-                MessageBox.Show($"Cliente Cadastrado com o ID {cliente.Id}");
+                //MessageBox.Show($"Cliente Cadastrado com o ID {cliente.Id}");
                 btnInserir.Enabled = false;
 
             }
@@ -97,6 +97,7 @@ namespace SysTINSApp
             {
                 MessageBox.Show("Falha ao Inserir Cliente!");
             }
+                
         }
 
 

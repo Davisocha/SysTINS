@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridView dgvClientes;
             txtCPF = new TextBox();
             txtNome = new TextBox();
             txtTelefone = new TextBox();
@@ -44,7 +45,6 @@
             label4 = new Label();
             label2 = new Label();
             lbNome = new Label();
-            dgvClientes = new DataGridView();
             clnID = new DataGridViewTextBoxColumn();
             clnNome = new DataGridViewTextBoxColumn();
             clnCPF = new DataGridViewTextBoxColumn();
@@ -55,6 +55,9 @@
             clnAtivo = new DataGridViewTextBoxColumn();
             TxtId = new TextBox();
             lblID = new Label();
+
+            dgvClientes = new DataGridView();
+
             gbClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
@@ -96,7 +99,10 @@
             gbClientes.Controls.Add(button3);
             gbClientes.Controls.Add(btnAtualizar);
             gbClientes.Controls.Add(btnInserir);
+
             gbClientes.Controls.Add(lblID);
+
+
             gbClientes.Controls.Add(label1);
             gbClientes.Controls.Add(label3);
             gbClientes.Controls.Add(label4);
@@ -351,7 +357,9 @@
         private DataGridViewTextBoxColumn clnData_nasc;
         private DataGridViewTextBoxColumn clnData_cad;
         private DataGridViewTextBoxColumn clnAtivo;
+
         private Label lblID;
+
         private DateTimePicker dtpData_nasc;
         private CheckBox ckbAtivo;
         private TextBox TxtId;
