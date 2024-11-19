@@ -41,7 +41,6 @@ namespace SysTINSApp
             dtpData_nasc.Value = (DateTime)cliente.Data_nasc;
             //
             ckbAtivo.Checked = cliente.Ativo;
-
             btnAtualizar.Visible = true;
             btnAtualizar.Enabled = true;
 

@@ -32,6 +32,7 @@ namespace SysTINSApp
         {
             var usuario = Program.usuariologado;
             txtUsuario.Text = Convert.ToString(usuario.Id);
+            
         }
     }
 }

@@ -362,3 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /SysTINSApp/FrmNovoCliente.resx
+/SysTINSApp/FrmNovoCliente.cs
+/SysTINSApp/FrmNovoCliente.cs
+/SysTINSApp/FrmNovoPedido.cs
