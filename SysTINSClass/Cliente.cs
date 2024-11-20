@@ -192,6 +192,10 @@ namespace SysTINSClass
 
         }
 
+        public static object ObterClientePorID()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     

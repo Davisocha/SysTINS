@@ -29,22 +29,6 @@
         private void InitializeComponent()
         {
             DataGridView dgvClientes;
-            txtCPF = new TextBox();
-            txtNome = new TextBox();
-            txtTelefone = new TextBox();
-            txtEmail = new TextBox();
-            gbClientes = new GroupBox();
-            ckbAtivo = new CheckBox();
-            dtpData_nasc = new DateTimePicker();
-            button1 = new Button();
-            button3 = new Button();
-            btnAtualizar = new Button();
-            btnInserir = new Button();
-            label1 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label2 = new Label();
-            lbNome = new Label();
             clnID = new DataGridViewTextBoxColumn();
             clnNome = new DataGridViewTextBoxColumn();
             clnCPF = new DataGridViewTextBoxColumn();
@@ -53,14 +37,103 @@
             clnData_nasc = new DataGridViewTextBoxColumn();
             clnData_cad = new DataGridViewTextBoxColumn();
             clnAtivo = new DataGridViewTextBoxColumn();
+            txtCPF = new TextBox();
+            txtNome = new TextBox();
+            txtTelefone = new TextBox();
+            txtEmail = new TextBox();
+            gbClientes = new GroupBox();
             TxtId = new TextBox();
+            ckbAtivo = new CheckBox();
+            dtpData_nasc = new DateTimePicker();
+            button1 = new Button();
+            button3 = new Button();
+            btnAtualizar = new Button();
+            btnInserir = new Button();
             lblID = new Label();
-
+            label1 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label2 = new Label();
+            lbNome = new Label();
             dgvClientes = new DataGridView();
-
-            gbClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
+            gbClientes.SuspendLayout();
             SuspendLayout();
+            // 
+            // dgvClientes
+            // 
+            dgvClientes.AllowUserToAddRows = false;
+            dgvClientes.AllowUserToDeleteRows = false;
+            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { clnID, clnNome, clnCPF, clnTel, clnEmail, clnData_nasc, clnData_cad, clnAtivo });
+            dgvClientes.Location = new Point(12, 240);
+            dgvClientes.Name = "dgvClientes";
+            dgvClientes.ReadOnly = true;
+            dgvClientes.RowHeadersVisible = false;
+            dgvClientes.Size = new Size(776, 198);
+            dgvClientes.TabIndex = 3;
+            dgvClientes.CellClick += DgvClientesCellClick;
+            dgvClientes.CellContentClick += dgvClientes_CellContentClick;
+            // 
+            // clnID
+            // 
+            clnID.Frozen = true;
+            clnID.HeaderText = "ID";
+            clnID.Name = "clnID";
+            clnID.ReadOnly = true;
+            clnID.Width = 50;
+            // 
+            // clnNome
+            // 
+            clnNome.Frozen = true;
+            clnNome.HeaderText = "Nome";
+            clnNome.Name = "clnNome";
+            clnNome.ReadOnly = true;
+            clnNome.Width = 130;
+            // 
+            // clnCPF
+            // 
+            clnCPF.Frozen = true;
+            clnCPF.HeaderText = "CPF";
+            clnCPF.Name = "clnCPF";
+            clnCPF.ReadOnly = true;
+            clnCPF.Width = 120;
+            // 
+            // clnTel
+            // 
+            clnTel.Frozen = true;
+            clnTel.HeaderText = "Telefone";
+            clnTel.Name = "clnTel";
+            clnTel.ReadOnly = true;
+            // 
+            // clnEmail
+            // 
+            clnEmail.Frozen = true;
+            clnEmail.HeaderText = "Email";
+            clnEmail.Name = "clnEmail";
+            clnEmail.ReadOnly = true;
+            // 
+            // clnData_nasc
+            // 
+            clnData_nasc.Frozen = true;
+            clnData_nasc.HeaderText = "Data de Nascimento";
+            clnData_nasc.Name = "clnData_nasc";
+            clnData_nasc.ReadOnly = true;
+            // 
+            // clnData_cad
+            // 
+            clnData_cad.Frozen = true;
+            clnData_cad.HeaderText = "Data de Cadastro";
+            clnData_cad.Name = "clnData_cad";
+            clnData_cad.ReadOnly = true;
+            // 
+            // clnAtivo
+            // 
+            clnAtivo.Frozen = true;
+            clnAtivo.HeaderText = "Ativo";
+            clnAtivo.Name = "clnAtivo";
+            clnAtivo.ReadOnly = true;
+            clnAtivo.Width = 80;
             // 
             // txtCPF
             // 
@@ -99,10 +172,7 @@
             gbClientes.Controls.Add(button3);
             gbClientes.Controls.Add(btnAtualizar);
             gbClientes.Controls.Add(btnInserir);
-
             gbClientes.Controls.Add(lblID);
-
-
             gbClientes.Controls.Add(label1);
             gbClientes.Controls.Add(label3);
             gbClientes.Controls.Add(label4);
@@ -118,6 +188,14 @@
             gbClientes.TabIndex = 2;
             gbClientes.TabStop = false;
             gbClientes.Text = "Clientes";
+            // 
+            // TxtId
+            // 
+            TxtId.Location = new Point(527, 44);
+            TxtId.Name = "TxtId";
+            TxtId.ReadOnly = true;
+            TxtId.Size = new Size(54, 23);
+            TxtId.TabIndex = 12;
             // 
             // ckbAtivo
             // 
@@ -180,6 +258,15 @@
             btnInserir.UseVisualStyleBackColor = true;
             btnInserir.Click += btnInserir_Click;
             // 
+            // lblID
+            // 
+            lblID.AutoSize = true;
+            lblID.Location = new Point(527, 26);
+            lblID.Name = "lblID";
+            lblID.Size = new Size(18, 15);
+            lblID.TabIndex = 2;
+            lblID.Text = "ID";
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -225,97 +312,6 @@
             lbNome.TabIndex = 2;
             lbNome.Text = "Nome";
             // 
-            // dgvClientes
-            // 
-            dgvClientes.AllowUserToAddRows = false;
-            dgvClientes.AllowUserToDeleteRows = false;
-            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { clnID, clnNome, clnCPF, clnTel, clnEmail, clnData_nasc, clnData_cad, clnAtivo });
-            dgvClientes.Location = new Point(12, 240);
-            dgvClientes.Name = "dgvClientes";
-            dgvClientes.ReadOnly = true;
-            dgvClientes.RowHeadersVisible = false;
-            dgvClientes.Size = new Size(776, 198);
-            dgvClientes.TabIndex = 3;
-            dgvClientes.CellClick += DgvClientesCellClick;
-            // 
-            // clnID
-            // 
-            clnID.Frozen = true;
-            clnID.HeaderText = "ID";
-            clnID.Name = "clnID";
-            clnID.ReadOnly = true;
-            clnID.Width = 50;
-            // 
-            // clnNome
-            // 
-            clnNome.Frozen = true;
-            clnNome.HeaderText = "Nome";
-            clnNome.Name = "clnNome";
-            clnNome.ReadOnly = true;
-            clnNome.Width = 130;
-            // 
-            // clnCPF
-            // 
-            clnCPF.Frozen = true;
-            clnCPF.HeaderText = "CPF";
-            clnCPF.Name = "clnCPF";
-            clnCPF.ReadOnly = true;
-            clnCPF.Width = 120;
-            // 
-            // clnTel
-            // 
-            clnTel.Frozen = true;
-            clnTel.HeaderText = "Telefone";
-            clnTel.Name = "clnTel";
-            clnTel.ReadOnly = true;
-            // 
-            // clnEmail
-            // 
-            clnEmail.Frozen = true;
-            clnEmail.HeaderText = "Email";
-            clnEmail.Name = "clnEmail";
-            clnEmail.ReadOnly = true;
-            // 
-            // clnData_nasc
-            // 
-            clnData_nasc.Frozen = true;
-            clnData_nasc.HeaderText = "Data de Nascimento";
-            clnData_nasc.Name = "clnData_nasc";
-            clnData_nasc.ReadOnly = true;
-            // 
-            // clnData_cad
-            // 
-            clnData_cad.Frozen = true;
-            clnData_cad.HeaderText = "Data de Cadastro";
-            clnData_cad.Name = "clnData_cad";
-            clnData_cad.ReadOnly = true;
-            // 
-            // clnAtivo
-            // 
-            clnAtivo.Frozen = true;
-            clnAtivo.HeaderText = "Ativo";
-            clnAtivo.Name = "clnAtivo";
-            clnAtivo.ReadOnly = true;
-            clnAtivo.Width = 80;
-            // 
-            // TxtId
-            // 
-            TxtId.Location = new Point(527, 44);
-            TxtId.Name = "TxtId";
-            TxtId.ReadOnly = true;
-            TxtId.Size = new Size(54, 23);
-            TxtId.TabIndex = 12;
-            // 
-            // lblID
-            // 
-            lblID.AutoSize = true;
-            lblID.Location = new Point(527, 26);
-            lblID.Name = "lblID";
-            lblID.Size = new Size(18, 15);
-            lblID.TabIndex = 2;
-            lblID.Text = "ID";
-            // 
             // FrmNovoCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -326,9 +322,9 @@
             Name = "FrmNovoCliente";
             Text = "FrmNovoCliente";
             Load += FrmNovoCliente_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             gbClientes.ResumeLayout(false);
             gbClientes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             ResumeLayout(false);
         }
 

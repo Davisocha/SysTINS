@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             grbIndentificacao = new GroupBox();
+            btnConsultarCliente = new Button();
             button1 = new Button();
             btnInserePedido = new Button();
             txtIdCliente = new TextBox();
-            textBox3 = new TextBox();
+            txtNomeCliente = new TextBox();
             txtUsuario = new TextBox();
             label3 = new Label();
             grbItens = new GroupBox();
@@ -79,10 +80,11 @@
             // 
             // grbIndentificacao
             // 
+            grbIndentificacao.Controls.Add(btnConsultarCliente);
             grbIndentificacao.Controls.Add(button1);
             grbIndentificacao.Controls.Add(btnInserePedido);
             grbIndentificacao.Controls.Add(txtIdCliente);
-            grbIndentificacao.Controls.Add(textBox3);
+            grbIndentificacao.Controls.Add(txtNomeCliente);
             grbIndentificacao.Controls.Add(txtUsuario);
             grbIndentificacao.Controls.Add(label3);
             grbIndentificacao.Location = new Point(35, 84);
@@ -91,6 +93,16 @@
             grbIndentificacao.TabIndex = 0;
             grbIndentificacao.TabStop = false;
             grbIndentificacao.Text = "Identificação";
+            // 
+            // btnConsultarCliente
+            // 
+            btnConsultarCliente.Location = new Point(506, 96);
+            btnConsultarCliente.Name = "btnConsultarCliente";
+            btnConsultarCliente.Size = new Size(108, 23);
+            btnConsultarCliente.TabIndex = 4;
+            btnConsultarCliente.Text = "Consultar Cliente";
+            btnConsultarCliente.UseVisualStyleBackColor = true;
+            btnConsultarCliente.Click += btnConsultarCliente_Click;
             // 
             // button1
             // 
@@ -106,11 +118,11 @@
             // 
             // btnInserePedido
             // 
-            btnInserePedido.Location = new Point(506, 44);
+            btnInserePedido.Location = new Point(506, 37);
             btnInserePedido.Name = "btnInserePedido";
-            btnInserePedido.Size = new Size(90, 62);
+            btnInserePedido.Size = new Size(108, 27);
             btnInserePedido.TabIndex = 1;
-            btnInserePedido.Text = "Abrir";
+            btnInserePedido.Text = "Abrir Pedido";
             btnInserePedido.UseVisualStyleBackColor = true;
             // 
             // txtIdCliente
@@ -121,13 +133,13 @@
             txtIdCliente.Size = new Size(78, 27);
             txtIdCliente.TabIndex = 0;
             // 
-            // textBox3
+            // txtNomeCliente
             // 
-            textBox3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(209, 93);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(255, 27);
-            textBox3.TabIndex = 1;
+            txtNomeCliente.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNomeCliente.Location = new Point(209, 93);
+            txtNomeCliente.Name = "txtNomeCliente";
+            txtNomeCliente.Size = new Size(255, 27);
+            txtNomeCliente.TabIndex = 1;
             // 
             // txtUsuario
             // 
@@ -393,11 +405,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Showcard Gothic", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.RoyalBlue;
             label1.Location = new Point(170, 23);
             label1.Name = "label1";
-            label1.Size = new Size(197, 33);
+            label1.Size = new Size(169, 31);
             label1.TabIndex = 2;
             label1.Text = "Novo Pedido";
             // 
@@ -546,9 +558,9 @@
         private Label label2;
         private TextBox txtIdPedido;
         private TextBox txtUsuario;
-        private TextBox textBox3;
+        public TextBox txtNomeCliente;
+        public TextBox txtIdCliente;
         private Button btnInserePedido;
-        private TextBox txtIdCliente;
         private Button btnAddItem;
         private DataGridView dgvItensPedido;
         private TextBox txtValorUnit;
@@ -583,5 +595,6 @@
         private RadioButton radioButton1;
         private Button button1;
         private Label label4;
+        private Button btnConsultarCliente;
     }
 }

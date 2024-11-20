@@ -12,7 +12,7 @@ namespace SysTINSApp
 {
     public partial class FrmNovoPedido : Form
     {
-        public FrmNovoPedido()
+        public FrmNovoPedido(SysTINSClass.Cliente clienteSelecionado)
         {
             InitializeComponent();
         }
@@ -21,7 +21,7 @@ namespace SysTINSApp
         private void FrmNovoPedido_Load(object sender, EventArgs e)
         {
             idUsuario();
-            
+
         }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
@@ -32,7 +32,15 @@ namespace SysTINSApp
         {
             var usuario = Program.usuariologado;
             txtUsuario.Text = Convert.ToString(usuario.Id);
-            
+
+        }
+
+
+        private void btnConsultarCliente_Click(object sender, EventArgs e)
+        {
+            FrmConsultaCliente frmConsultaCliente = new();
+            frmConsultaCliente.MdiParent = this;
+            frmConsultaCliente.Show();
         }
     }
 }

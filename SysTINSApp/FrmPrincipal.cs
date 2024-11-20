@@ -105,5 +105,12 @@ namespace SysTINSApp
             frmNovoPedido.MdiParent = this;
             frmNovoPedido.Show();
         }
+
+        private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultaCliente frmConsultaCliente = new();
+            frmConsultaCliente.MdiParent = this;
+            frmConsultaCliente.Show();
+        }
     }
 }

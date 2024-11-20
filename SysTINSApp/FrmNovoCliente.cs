@@ -51,7 +51,7 @@ namespace SysTINSApp
             CarregaGridDeClientes();
 
         }
-        private void CarregaGridDeClientes()
+        public void CarregaGridDeClientes()
         {
             var listaCliente = Cliente.ObterListaClientes();
             dgvClientes.Rows.Clear();
@@ -96,7 +96,7 @@ namespace SysTINSApp
             {
                 MessageBox.Show("Falha ao Inserir Cliente!");
             }
-                
+
         }
 
 
@@ -129,6 +129,11 @@ namespace SysTINSApp
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
