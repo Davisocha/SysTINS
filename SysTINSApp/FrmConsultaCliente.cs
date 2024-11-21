@@ -38,7 +38,7 @@ namespace SysTINSApp
             {
                 dgvConsulta.Rows.Add();//para cada usuarios adicione uma linha 
                 dgvConsulta.Rows[linha].Cells[0].Value = cliente.Id;// na linhas [linha que vale na posição 0] que cells[ posição da coluna 0] que tem o value de usuario.Id ou seja id do usuario
-                dgvConsulta.Rows[linha].Cells[1].Value = cliente.Id;
+                dgvConsulta.Rows[linha].Cells[1].Value = cliente.Nome;
                 linha++;//ele pula a linha
             }
         }

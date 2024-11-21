@@ -18,21 +18,6 @@ namespace SysTINSApp
         {
             InitializeComponent();
         }
-
-        private void NovoClienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PedidosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PedidosToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-
-        }
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             Hide();
@@ -99,18 +84,24 @@ namespace SysTINSApp
             frmNovoCliente.Show();
         }
 
-        private void novoToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            FrmNovoPedido frmNovoPedido = new();
-            frmNovoPedido.MdiParent = this;
-            frmNovoPedido.Show();
-        }
-
         private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmConsultaCliente frmConsultaCliente = new();
             frmConsultaCliente.MdiParent = this;
             frmConsultaCliente.Show();
+        }
+
+        private void pedidosToolStripMenuItem_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void novoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmNovoPedido frmNovo = new();
+            frmNovo.MdiParent = this;
+            frmNovo.Show();
+
         }
     }
 }

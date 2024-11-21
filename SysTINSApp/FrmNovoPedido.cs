@@ -12,7 +12,7 @@ namespace SysTINSApp
 {
     public partial class FrmNovoPedido : Form
     {
-        public FrmNovoPedido(SysTINSClass.Cliente clienteSelecionado)
+        public FrmNovoPedido()
         {
             InitializeComponent();
         }
@@ -32,8 +32,9 @@ namespace SysTINSApp
         {
             var usuario = Program.usuariologado;
             txtUsuario.Text = Convert.ToString(usuario.Id);
-
         }
+            
+
 
 
         private void btnConsultarCliente_Click(object sender, EventArgs e)
