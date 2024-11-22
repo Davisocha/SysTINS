@@ -13,6 +13,10 @@ namespace SysTINSApp
 {
     public partial class FrmConsultaCliente : Form
     {
+
+        public static string ClienteSelecionadoNome { get; internal set; }
+        public static object ClienteSelecionadoId { get; internal set; }
+
         public FrmConsultaCliente()
         {
             InitializeComponent();
@@ -44,7 +48,18 @@ namespace SysTINSApp
         }
         private void dgvConsulta_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            if (e.RowIndex >= 0)
+            {
+                int iduser = Convert.ToInt32(dgvConsulta.Rows[e.RowIndex].Cells[0].Value.ToString());
+                string nomecliente = Convert.ToString(dgvConsulta.Rows[e.RowIndex].Cells[1].Value);
+
+                ClienteSelecionadoId = iduser;
+                ClienteSelecionadoNome = nomecliente;
+                //
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
+
     }
 }

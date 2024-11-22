@@ -12,6 +12,7 @@ namespace SysTINSApp
 {
     public partial class FrmNovoPedido : Form
     {
+        
         public FrmNovoPedido()
         {
             InitializeComponent();
@@ -40,8 +41,13 @@ namespace SysTINSApp
         private void btnConsultarCliente_Click(object sender, EventArgs e)
         {
             FrmConsultaCliente frmConsultaCliente = new();
-            frmConsultaCliente.MdiParent = this;
-            frmConsultaCliente.Show();
+            
+            if (frmConsultaCliente.ShowDialog() == DialogResult.OK)
+            {
+                txtIdCliente.Text = FrmConsultaCliente.ClienteSelecionadoId.ToString();
+                txtNomeCliente.Text =  FrmConsultaCliente.ClienteSelecionadoNome;
+                btnInserePedido.Visible = true;
+            }
         }
     }
 }

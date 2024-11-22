@@ -124,6 +124,7 @@
             btnInserePedido.TabIndex = 1;
             btnInserePedido.Text = "Abrir Pedido";
             btnInserePedido.UseVisualStyleBackColor = true;
+            btnInserePedido.Visible = false;
             // 
             // txtIdCliente
             // 

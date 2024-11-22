@@ -300,8 +300,8 @@
         private ComboBox CmbNivel;
         private Label label5;
         private CheckBox chkAtivo;
-        private TextBox TxtId;
-        private TextBox TxtNome;
+        public TextBox TxtId;
+        public TextBox TxtNome;
         private TextBox TxtEmail;
         private TextBox TxtSenha;
         private Label label6;

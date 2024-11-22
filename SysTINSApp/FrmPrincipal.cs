@@ -17,6 +17,7 @@ namespace SysTINSApp
         public FrmPrincipal()
         {
             InitializeComponent();
+            this.IsMdiContainer = true;
         }
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
