@@ -43,6 +43,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(356, 23);
             txtEmail.TabIndex = 0;
+            txtEmail.Text = "mari@mari.com";
             txtEmail.TextChanged += textBox1_TextChanged;
             // 
             // txtSenha
@@ -51,6 +52,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(359, 23);
             txtSenha.TabIndex = 1;
+            txtSenha.Text = "123456";
             txtSenha.UseSystemPasswordChar = true;
             txtSenha.TextChanged += txtSenha_TextChanged;
             // 

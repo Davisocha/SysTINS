@@ -13,6 +13,7 @@ namespace SysTINSClass
         public Cliente Cliente { get; set; }
         public DateTime Data { get; set; }
         public string Status { get; set; }
+        public double esconto { get; set; }
         public double Desconto { get; set; }
         public List<ItemPedido>? Items { get; set; }
 
@@ -56,7 +57,8 @@ namespace SysTINSClass
             cmd.CommandText = $"sp_pedido_insert";
             cmd.Parameters.AddWithValue("spusuario_id", Usuario.Id);
             cmd.Parameters.AddWithValue("spcliente_id", Cliente.Id);
-            cmd.ExecuteNonQuery();
+            Id = Convert.ToInt32(cmd.ExecuteScalar());//esse obj ele vai ter o id associado,e ele entrega o id do pedido criado
+            //cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
         public void AtualizarPedido()
@@ -111,6 +113,8 @@ namespace SysTINSClass
             }
             return pedidos;
         }
+
+  
     }
 }
 

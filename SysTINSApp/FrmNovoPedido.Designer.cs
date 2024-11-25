@@ -334,6 +334,7 @@
             btnAddItem.TabIndex = 5;
             btnAddItem.Text = "A&dicionar";
             btnAddItem.UseVisualStyleBackColor = true;
+            btnAddItem.Click += btnAddItem_Click;
             // 
             // dgvItensPedido
             // 
@@ -341,12 +342,15 @@
             dgvItensPedido.AllowUserToDeleteRows = false;
             dgvItensPedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvItensPedido.Columns.AddRange(new DataGridViewColumn[] { clnSeq, clnCodBar, clnDescricao, clnValorUnit, clnQuantidade, clnDescontoItem, clnTotalItem });
+            dgvItensPedido.Enabled = false;
             dgvItensPedido.Location = new Point(6, 105);
             dgvItensPedido.Name = "dgvItensPedido";
             dgvItensPedido.ReadOnly = true;
             dgvItensPedido.RowHeadersVisible = false;
             dgvItensPedido.Size = new Size(620, 173);
             dgvItensPedido.TabIndex = 0;
+            dgvItensPedido.CellClick += dgvItensPedido_CellClick;
+            dgvItensPedido.CellContentClick += dgvItensPedido_CellContentClick;
             // 
             // clnSeq
             // 
