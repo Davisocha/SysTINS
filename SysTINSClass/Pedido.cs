@@ -13,7 +13,6 @@ namespace SysTINSClass
         public Cliente Cliente { get; set; }
         public DateTime Data { get; set; }
         public string Status { get; set; }
-        public double esconto { get; set; }
         public double Desconto { get; set; }
         public List<ItemPedido>? Items { get; set; }
 

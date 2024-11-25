@@ -34,7 +34,7 @@
             btnInserePedido = new Button();
             txtIdCliente = new TextBox();
             txtNomeCliente = new TextBox();
-            txtUsuario = new TextBox();
+            txtIdUsuario = new TextBox();
             label3 = new Label();
             grbItens = new GroupBox();
             label4 = new Label();
@@ -85,7 +85,7 @@
             grbIndentificacao.Controls.Add(btnInserePedido);
             grbIndentificacao.Controls.Add(txtIdCliente);
             grbIndentificacao.Controls.Add(txtNomeCliente);
-            grbIndentificacao.Controls.Add(txtUsuario);
+            grbIndentificacao.Controls.Add(txtIdUsuario);
             grbIndentificacao.Controls.Add(label3);
             grbIndentificacao.Location = new Point(35, 84);
             grbIndentificacao.Name = "grbIndentificacao";
@@ -125,6 +125,7 @@
             btnInserePedido.Text = "Abrir Pedido";
             btnInserePedido.UseVisualStyleBackColor = true;
             btnInserePedido.Visible = false;
+            btnInserePedido.Click += btnInserePedido_Click;
             // 
             // txtIdCliente
             // 
@@ -142,15 +143,15 @@
             txtNomeCliente.Size = new Size(255, 27);
             txtNomeCliente.TabIndex = 1;
             // 
-            // txtUsuario
+            // txtIdUsuario
             // 
-            txtUsuario.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsuario.Location = new Point(92, 37);
-            txtUsuario.Name = "txtUsuario";
-            txtUsuario.ReadOnly = true;
-            txtUsuario.Size = new Size(372, 27);
-            txtUsuario.TabIndex = 1;
-            txtUsuario.TextChanged += txtUsuario_TextChanged;
+            txtIdUsuario.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtIdUsuario.Location = new Point(92, 37);
+            txtIdUsuario.Name = "txtIdUsuario";
+            txtIdUsuario.ReadOnly = true;
+            txtIdUsuario.Size = new Size(372, 27);
+            txtIdUsuario.TabIndex = 1;
+            txtIdUsuario.TextChanged += txtUsuario_TextChanged;
             // 
             // label3
             // 
@@ -433,6 +434,7 @@
             txtIdPedido.Name = "txtIdPedido";
             txtIdPedido.Size = new Size(181, 43);
             txtIdPedido.TabIndex = 4;
+            txtIdPedido.TextChanged += txtIdPedido_TextChanged;
             // 
             // txtTotal
             // 
@@ -558,7 +560,7 @@
         private Label label1;
         private Label label2;
         private TextBox txtIdPedido;
-        private TextBox txtUsuario;
+        private TextBox txtIdUsuario;
         public TextBox txtNomeCliente;
         public TextBox txtIdCliente;
         private Button btnInserePedido;

@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.Protobuf;
+using SysTINSClass;
 
 namespace SysTINSApp
 {
     public partial class FrmNovoPedido : Form
     {
-        
+
         public FrmNovoPedido()
         {
             InitializeComponent();
@@ -32,22 +34,41 @@ namespace SysTINSApp
         private void idUsuario()
         {
             var usuario = Program.usuariologado;
-            txtUsuario.Text = Convert.ToString(usuario.Id);
+            txtIdUsuario.Text = Convert.ToString(usuario.Id);
         }
-            
+
 
 
 
         private void btnConsultarCliente_Click(object sender, EventArgs e)
         {
             FrmConsultaCliente frmConsultaCliente = new();
-            
+
             if (frmConsultaCliente.ShowDialog() == DialogResult.OK)
             {
                 txtIdCliente.Text = FrmConsultaCliente.ClienteSelecionadoId.ToString();
-                txtNomeCliente.Text =  FrmConsultaCliente.ClienteSelecionadoNome;
+                txtNomeCliente.Text = FrmConsultaCliente.ClienteSelecionadoNome;
                 btnInserePedido.Visible = true;
             }
+        }
+
+        private void btnInserePedido_Click(object sender, EventArgs e)
+        {
+            //Pedido pedido = new(
+            //   txtIdUsuario.Text,
+            //   txtIdUsuario.Text
+            //   );
+
+            //pedido.InserirPedido();
+            //if (pedido.Id > 0)
+            //{
+
+            //}
+        }
+
+        private void txtIdPedido_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
