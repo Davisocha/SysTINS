@@ -95,6 +95,6 @@ namespace SysTINSClass
             cmd.ExecuteNonQuery();
         }
 
-
+  
     }
 }

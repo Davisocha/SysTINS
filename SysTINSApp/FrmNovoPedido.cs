@@ -105,11 +105,12 @@ namespace SysTINSApp
         {
             Produto produto = new();
              ItemPedido itemPedido = new(
-                txtIdPedido,
-                txtCodBar.Text = produto.Cod_barras,
-                txtQuantidade.Text,
-                txtQuantidade.Text
+                Convert.ToInt32(txtIdPedido.Text),
+                Produto.ObterPorId(produto.Id),
+                Convert.ToDouble(txtQuantidade.Text),
+                Convert.ToDouble(txtQuantidade.Text)
                 );
+            MessageBox.Show($"item adicionado");
         }
     }
 }
