@@ -24,6 +24,7 @@ namespace SysTINSApp
         private void FrmNovoPedido_Load(object sender, EventArgs e)
         {
             idUsuario();
+            CarregaGridItens();
 
         }
 
@@ -74,23 +75,24 @@ namespace SysTINSApp
 
         }
 
-        private void CarregaGridItens(ItemPedido itemPedido)
+        private ItemPedido itemPedido = new();
+        private void CarregaGridItens()
         {
             dgvItensPedido.Rows.Clear();
-
-            var ListadeDeUsuario = ItemPedido.ObterItemPorPedidoID(itemPedido.PedidoId);
+            var pedidoId = itemPedido;
+            var ListadeDeUsuario = ItemPedido.ObterItemPorPedidoID(pedidoId.PedidoId);
             int sequencia = 1;
             int linha = 0;
             foreach (var item in ListadeDeUsuario)// para cada usuario dentro da lista de usuarios faça
             {
                 dgvItensPedido.Rows.Add();//para cada usuarios adicione uma linha 
                 dgvItensPedido.Rows[linha].Cells[0].Value = sequencia;// na linhas [linha que vale na posição 0] que cells[ posição da coluna 0] que tem o value de usuario.Id ou seja id do usuario
-                dgvItensPedido.Rows[linha].Cells[1].Value = itemPedido.Produto.Cod_barras;
-                dgvItensPedido.Rows[linha].Cells[2].Value = itemPedido.Produto.Descricao;
-                dgvItensPedido.Rows[linha].Cells[3].Value = itemPedido.Produto.Valor_unit;
-                dgvItensPedido.Rows[linha].Cells[4].Value = itemPedido.Quantidade;
-                dgvItensPedido.Rows[linha].Cells[5].Value = itemPedido.Produto.Classe_desconto;
-                dgvItensPedido.Rows[linha].Cells[6].Value = $"{itemPedido.Quantidade * itemPedido.Produto.Classe_desconto}";
+                dgvItensPedido.Rows[linha].Cells[1].Value = pedidoId.Produto.Cod_barras;
+                dgvItensPedido.Rows[linha].Cells[2].Value = pedidoId.Produto.Descricao;
+                dgvItensPedido.Rows[linha].Cells[3].Value = pedidoId.Produto.Valor_unit;
+                dgvItensPedido.Rows[linha].Cells[4].Value = pedidoId.Quantidade;
+                dgvItensPedido.Rows[linha].Cells[5].Value = pedidoId.Produto.Classe_desconto;
+                dgvItensPedido.Rows[linha].Cells[6].Value = $"{pedidoId.Quantidade * pedidoId.Produto.Classe_desconto}";
                 sequencia++;
                 linha++;//ele pula a linha
             }
@@ -110,7 +112,17 @@ namespace SysTINSApp
                 Convert.ToDouble(txtQuantidade.Text),
                 Convert.ToDouble(txtQuantidade.Text)
                 );
+            if (itemPedido.Id > 0)
+            { 
+            CarregaGridItens();
             MessageBox.Show($"item adicionado");
+            btnAddItem.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Erro");
+            }   
+                
         }
     }
 }
