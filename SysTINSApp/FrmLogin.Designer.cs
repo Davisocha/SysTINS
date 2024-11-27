@@ -43,7 +43,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(356, 23);
             txtEmail.TabIndex = 0;
-            txtEmail.Text = "mari@mari.com";
+            txtEmail.Text = "davi@davi.com";
             txtEmail.TextChanged += textBox1_TextChanged;
             // 
             // txtSenha

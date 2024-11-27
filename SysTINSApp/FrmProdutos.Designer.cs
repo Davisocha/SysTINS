@@ -83,8 +83,9 @@
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.ReadOnly = true;
             dgvProdutos.RowHeadersVisible = false;
-            dgvProdutos.Size = new Size(965, 220);
+            dgvProdutos.Size = new Size(975, 220);
             dgvProdutos.TabIndex = 9;
+            dgvProdutos.CellContentClick += dgvProdutos_CellContentClick;
             // 
             // clnId
             // 

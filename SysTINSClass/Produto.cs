@@ -99,6 +99,29 @@ namespace SysTINSClass
             cmd.Connection.Close();
             return produtos;
         }
+        public static Produto ObterPorCodBar(string codbar)
+        {
+            Produto produtos = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from produtos where id ={codbar}";
+            var dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                produtos = new(
+                   dr.GetInt32(0),
+                   dr.GetString(1),
+                   dr.GetString(2),
+                   dr.GetDouble(3),
+                   dr.GetString(4),
+                   Categoria.ObterPorID(dr.GetInt32(5)),
+                   dr.GetDouble(6),
+                   dr.GetDouble(7),
+                   dr.GetDateTime(9)
+                   );
+            }
+            cmd.Connection.Close();
+            return produtos;
+        }
         //obter lista de Produtos
         /// <summary>
         /// Este metodo é feito para obter a lista dos produtos cadastrados no sistema ordenado pelo id

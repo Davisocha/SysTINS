@@ -39,7 +39,7 @@ namespace SysTINSApp
                 dgvProdutos.Rows[linha].Cells[4].Value = produto.Unidade_venda;
                 dgvProdutos.Rows[linha].Cells[5].Value = produto.Categoria.Nome;
                 dgvProdutos.Rows[linha].Cells[6].Value = produto.Estoque_minimo;
-                dgvProdutos.Rows[linha].Cells[7].Value = (produto.Classe_desconto * 100 + "%");
+                dgvProdutos.Rows[linha].Cells[7].Value = (produto.Classe_desconto * 0.01 + "%");
                 dgvProdutos.Rows[linha].Cells[8].Value = produto.Data_cad;
                 linha++;
 
@@ -118,6 +118,11 @@ namespace SysTINSApp
             panel1.Visible = false;
             gpProdutos.Enabled = true;
             cmbCategoria.SelectedIndex = 0;// ele cancela a operação de inserir categorias e volta a operação normal
+        }
+
+        private void dgvProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

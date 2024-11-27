@@ -59,12 +59,7 @@ namespace SysTINSApp
                                //se eu colocar show dialog ele não fecha até que encerre 
         }
 
-        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmCategorias frmCategorias = new();
-            frmCategorias.MdiParent = this;
-            frmCategorias.Show();
-        }
+    
 
         private void novoinserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -103,6 +98,13 @@ namespace SysTINSApp
             frmNovo.MdiParent = this;
             frmNovo.Show();
 
+        }
+
+        private void buscarConsultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultaProduto frmConsulta = new();
+            frmConsulta.MdiParent = this;
+            frmConsulta.Show();
         }
     }
 }

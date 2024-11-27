@@ -105,24 +105,64 @@ namespace SysTINSApp
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+
             Produto produto = new();
-             ItemPedido itemPedido = new(
-                Convert.ToInt32(txtIdPedido.Text),
-                Produto.ObterPorId(produto.Id),
-                Convert.ToDouble(txtQuantidade.Text),
-                Convert.ToDouble(txtQuantidade.Text)
-                );
+            FrmConsultaProduto frmConsultaProduto = new();
+            ItemPedido itemPedido = new(
+               int.Parse(txtIdPedido.Text),
+               Produto.ObterPorCodBar(txtCodBar.Text),
+               double.Parse(txtQuantidade.Text),
+               double.Parse(txtDescontoItem.Text)
+
+               ); 
             if (itemPedido.Id > 0)
-            { 
-            CarregaGridItens();
-            MessageBox.Show($"item adicionado");
-            btnAddItem.Enabled = false;
+            {
+                CarregaGridItens();
+                MessageBox.Show($"item adicionado");
+                btnAddItem.Enabled = false;
             }
             else
             {
                 MessageBox.Show("Erro");
-            }   
-                
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FrmConsultaProduto frmConsultaProduto = new();
+            if (frmConsultaProduto.ShowDialog() == DialogResult.OK)
+            {
+
+                txtIdProduto.Text = Convert.ToString(frmConsultaProduto.IdProdutoConsulta);
+                txtCodBar.Text = frmConsultaProduto.Cod_barra;
+                txtDescricao.Text = frmConsultaProduto.Descricao;
+                txtValorUnit.Text = Convert.ToString(frmConsultaProduto.Valor_unit);
+                txtDescontoItem.Text = Convert.ToString(frmConsultaProduto.Classe_desconto);
+
+            }
+
+
+
+        }
+
+        private void txtCodBar_Leave(object sender, EventArgs e)
+        {
+               
+            if (txtCodBar.Text.Length > 9)
+            {
+                Produto produto = Produto.ObterPorCodBar(txtCodBar.Text);
+                if (produto.Id > 0)
+                {
+                    txtDescricao.Text = produto.Descricao;
+                    txtValorUnit.Text = produto.Valor_unit.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Código de Barras Inválidp ou Produto não Cadastrado");
+                }
+
+            }
         }
     }
 }
