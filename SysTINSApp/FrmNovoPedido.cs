@@ -107,22 +107,23 @@ namespace SysTINSApp
         {
 
             Produto produto = new();
-            FrmConsultaProduto frmConsultaProduto = new();
             ItemPedido itemPedido = new(
                int.Parse(txtIdPedido.Text),
                Produto.ObterPorCodBar(txtCodBar.Text),
                double.Parse(txtQuantidade.Text),
                double.Parse(txtDescontoItem.Text)
 
-               ); 
+               );
+            itemPedido.Inserir();
             if (itemPedido.Id > 0)
             {
-                CarregaGridItens();
+                //CarregaGridItens();
                 MessageBox.Show($"item adicionado");
                 btnAddItem.Enabled = false;
             }
             else
             {
+                MessageBox.Show($"{itemPedido.Id}");
                 MessageBox.Show("Erro");
             }
 
@@ -159,7 +160,7 @@ namespace SysTINSApp
                 }
                 else
                 {
-                    MessageBox.Show("Código de Barras Inválidp ou Produto não Cadastrado");
+                    MessageBox.Show("Código de Barras Inválido ou Produto não Cadastrado");
                 }
 
             }

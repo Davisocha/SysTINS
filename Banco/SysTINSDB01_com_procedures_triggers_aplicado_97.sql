@@ -447,7 +447,7 @@ DELIMITER ;
 DELIMITER $$
 USE `systinsdb01`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_itempedido_insert`(sppedido_id int, spproduto_id int, spquantidade decimal (10,2), spdesconto decimal(10,2))
-begin
+begin   
 	insert into itempedido
     values (0, sppedido_id, spproduto_id, (select valor_unit from produtos where id = spproduto_id), spquantidade, spdesconto);
     select last_insert_id();

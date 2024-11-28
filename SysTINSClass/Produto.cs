@@ -147,6 +147,7 @@ namespace SysTINSClass
                    dr.GetDateTime(9)
                    ));
             }
+            
             return Lista;
         }
         /// <summary>
